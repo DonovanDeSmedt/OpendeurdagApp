@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using OpendeurdagApp.view;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,6 +26,21 @@ namespace OpendeurdagApp
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void Hoofdmenu_OnClick(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+        private void OpleidingenOverzicht_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof (opleidingen));
+        }
+
+        private void Opendeur_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

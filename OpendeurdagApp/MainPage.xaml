@@ -7,7 +7,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <SplitView x:Name="MySplitView" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
+        <SplitView.Pane>
+            <StackPanel Background="Gray">
+                <Button x:Name="Hoofdmenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                    Width="50" Height="50" Background="Transparent" Click="Hoofdmenu_OnClick"/>
 
-    </Grid>
+                <StackPanel Orientation="Horizontal" Tapped="OpleidingenOverzicht_OnTapped">
+                    <Button x:Name="Opleidingen" Content="&#xE2B1;"
+                    Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Button 1" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Tapped="Opendeur_OnTapped">
+                    <Button x:Name="Opendeur" FontFamily="Segoe MDL2 Assets" Content="&#xE2AD;"
+                        Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Button 2" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <StackPanel>
+                <TextBlock Text="Open"/>
+                <Frame Name="mainFrame"></Frame>
+            </StackPanel>
+        </SplitView.Content>
+    </SplitView>
+
+  
 </Page>
