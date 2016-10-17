@@ -11,8 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
+using Windows.UI.Xaml.Navigation;   
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace OpendeurdagApp.view
@@ -25,6 +24,29 @@ namespace OpendeurdagApp.view
         public opleidingen()
         {
             this.InitializeComponent();
+        }
+
+        private void ListViewItemInformatica_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (textBlockInformatica.Visibility == Visibility.Visible)
+            {
+                textBlockInformatica.Visibility = Visibility.Collapsed;
+            }
+            else
+            textBlockInformatica.Visibility = Visibility.Visible;
+        }
+
+        private void ListViewItemBedrijfsmanagement_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (textBlockBedrijfsmanagsement.Visibility == Visibility.Visible)
+            {
+                textBlockBedrijfsmanagsement.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textBlockBedrijfsmanagsement.Visibility = Visibility.Visible;
+            }
+
         }
     }
 }

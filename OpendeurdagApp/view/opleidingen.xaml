@@ -1,20 +1,28 @@
 ﻿<Page
-    x:Class="OpendeurdagApp.view.opleidingen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OpendeurdagApp.view"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="OpendeurdagApp.view.opleidingen"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="StyleTextblockOpleidingen" TargetType="TextBlock"/>
+    </Page.Resources>
 
-   
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <StackPanel HorizontalAlignment="Left" Height="638" Margin="0,72,0,0" VerticalAlignment="Top" Width="1270">
-            <ListView x:Name="listView" Height="642" RenderTransformOrigin="0.5,0.5">
-                <ListViewItem Content="Toegepaste Informatica"/>
-                <ListViewItem Content="Bedrijfsmanagement"/>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel d:LayoutOverrides="Width, LeftPosition, RightPosition" VerticalAlignment="Top" Margin="0,72,0,0">
+            <ListViewHeaderItem Padding="12,8" MinHeight="0" Margin="0,0,0,4" HorizontalContentAlignment="Center" FontSize="32" FontWeight="Bold" Content="Opleidingen"/>
+            <ListView x:Name="listView" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem Tapped="ListViewItemInformatica_Tapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="Toegepaste Informatica"/>
+                <TextBlock x:Name="textBlockInformatica" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content">
+                    <Run Text="De IT'er van vandaag is veel meer dan alleen maar een technische expert. Hij of zij moet tegelijkertijd een ondernemende, communicatieve en klantgerichte teamspeler zijn. IT is namelijk geëvolueerd van een zuiver technisch verhaal naar 'IT as a service and support tool'. De moderne IT'er is dan ook vooral een ITmanager: iemand die in staat is de strategie van een bedrijf te vertalen naar ICT-oplossingen. De bacheloropleiding toegepaste informatica speelt met haar programma dan ook perfect in op wat de markt en het bedrijfsleven van vandaag exact verlangen van een IT'er. Om performant te kunnen functioneren in een all-round managementfunctie zal je dus tijdens je opleiding niet alleen vlot de nodige IT-skills leren beheersen. Ook business en ondernemerschap maken een belangrijk onderdeel uit van de training. Binnen de opleiding is er ruime aandacht voor wat wij noemen 'een authentieke leeromgeving'. Je zal vanaf het eerste jaar in verschillende vakken en projecten boeiende opdrachten mogen uitwerken die rechtstreeks verband houden met de beroepspraktijk en het werkveld. En natuurlijk kan je daarbij rekenen op professionele support door onze docenten die altijd vakspecialisten zijn. Zo leer je niet alleen de concrete dagelijkse beroepspraktijk beter kennen, je scherpt ook je communicatieve en sociale vaardigheden aan. Goed kunnen spreken en presenteren, je standpunt duidelijk maken in je team en in het bedrijfsleven, kunnen onderhandelen en overtuigen, … het zijn cruciale skills die je voorbereiden op de beste jobs en je een voorsprong geven op de arbeidsmarkt."/>
+                </TextBlock>
+                <ListViewItem Tapped="ListViewItemBedrijfsmanagement_OnTapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="Bedrijfsmanagement"/>
+                <TextBlock x:Name="textBlockBedrijfsmanagsement" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content">
+                    <Run Text="Als je echt niet weet wat te doen en make-up over hebt dan is dit DE opleiding!"/></TextBlock>            
             </ListView>
         </StackPanel>
-        
     </Grid>
 </Page>
