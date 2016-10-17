@@ -42,5 +42,9 @@ namespace OpendeurdagApp
         {
             throw new NotImplementedException();
         }
+        private void Campussen_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof(campussen));
+        }
     }
 }

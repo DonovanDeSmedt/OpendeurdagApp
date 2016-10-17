@@ -24,10 +24,16 @@
                         Width="50" Height="50" Background="Transparent"/>
                     <TextBlock Text="Opendeur" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
+                <StackPanel Orientation="Horizontal" Tapped="Campussen_OnTapped">
+                    <Button x:Name="Campussen" FontFamily="Segoe MDL2 Assets" Content="&#xE2AD;"
+                        Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Campussen" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
             </StackPanel>
         </SplitView.Pane>
         <SplitView.Content>
             <StackPanel>
+                <TextBlock Text="Open"/>
                 <Frame Name="mainFrame"></Frame>
             </StackPanel>
         </SplitView.Content>
