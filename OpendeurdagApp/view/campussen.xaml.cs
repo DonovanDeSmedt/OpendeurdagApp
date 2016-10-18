@@ -26,5 +26,10 @@ namespace OpendeurdagApp.view
         {
             this.InitializeComponent();
         }
+        private void Richting_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            //Go to view opleidingen en de listview van de opleiding openklikken
+        }
     }
+    
 }

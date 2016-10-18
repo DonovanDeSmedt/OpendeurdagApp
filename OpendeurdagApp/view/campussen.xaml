@@ -6,6 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="BoldCenter" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -17,45 +23,48 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button x:Name="ImgSchoonmeersen" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="160" Width="180" >
+        <Button x:Name="ImgSchoonmeersen" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/schoonmeersen.jpg"/>
             </Button.Background>
         </Button>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
             <TextBlock Text="Campus schoonmeersen"></TextBlock>
-            <TextBlock Text="Hoofdcampus HoGent"></TextBlock>
-            <TextBlock Text="richtingen"></TextBlock>
+            <ListView>
+
+            </ListView>
+            <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}" Tapped="Richting_OnTapped" ></TextBlock>
+            <TextBlock Text="Locatie"></TextBlock>
         </StackPanel>
-        <Button x:Name="ImgMercator" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="160" Width="180" >
+        <Button x:Name="ImgMercator" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/mercator.jpg"/>
             </Button.Background>
         </Button>
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1">
             <TextBlock Text="Campus Mercator"></TextBlock>
-            <TextBlock Text="Gelegen in Gent"></TextBlock>
-            <TextBlock Text="richtingen"></TextBlock>
+            <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
+            <TextBlock Text="Locatie"></TextBlock>
         </StackPanel>
-        <Button x:Name="ImgAalst" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="160" Width="180" >
+        <Button x:Name="ImgAalst" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/aalst.jpg"/>
             </Button.Background>
         </Button>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
             <TextBlock Text="Campus Aalst"></TextBlock>
-            <TextBlock Text="Gelegen in Aalst"></TextBlock>
-            <TextBlock Text="richtingen"></TextBlock>
+            <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
+            <TextBlock Text="Locatie"></TextBlock>
         </StackPanel>
-        <Button x:Name="ImgLedeganck" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Height="160" Width="180" >
+        <Button x:Name="ImgLedeganck" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/ledeganck.jpg"/>
             </Button.Background>
         </Button>
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="3">
             <TextBlock Text="Campus Ledganck"></TextBlock>
-            <TextBlock Text="Gelegen in Gent"></TextBlock>
-            <TextBlock Text="richtingen"></TextBlock>
+            <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
+            <TextBlock Text="Locatie"></TextBlock>
         </StackPanel>
     </Grid>
     <!--<StackPanel Orientation="Vertical">
