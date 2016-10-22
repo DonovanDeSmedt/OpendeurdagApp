@@ -40,7 +40,7 @@ namespace OpendeurdagApp
 
         private void Opendeur_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            mainFrame.Navigate(typeof(cars));
         }
         private void Campussen_OnTapped(object sender, TappedRoutedEventArgs e)
         {

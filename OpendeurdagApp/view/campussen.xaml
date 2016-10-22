@@ -5,6 +5,8 @@
     xmlns:local="using:OpendeurdagApp.view"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:objectModel="using:System.Collections.ObjectModel"
+    xmlns:model="using:OpendeurdagApp.model"
     mc:Ignorable="d">
     <Page.Resources>
         <Style x:Key="BoldCenter" TargetType="TextBlock">
@@ -13,6 +15,7 @@
         </Style>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -28,13 +31,23 @@
                 <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/schoonmeersen.jpg"/>
             </Button.Background>
         </Button>
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
-            <TextBlock Text="Campus schoonmeersen"></TextBlock>
-            <ListView>
 
-            </ListView>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+            <TextBlock Text="{Binding Naam}"></TextBlock>
             <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}" Tapped="Richting_OnTapped" ></TextBlock>
-            <TextBlock Text="Locatie"></TextBlock>
+            <ListView ItemsSource="{Binding Richtingen}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Naam}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Locatie:" Padding="0,0,10, 0"/>
+                <TextBlock Text="{Binding Adres}"/>
+            </StackPanel>
         </StackPanel>
         <Button x:Name="ImgMercator" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
             <Button.Background>
@@ -67,18 +80,4 @@
             <TextBlock Text="Locatie"></TextBlock>
         </StackPanel>
     </Grid>
-    <!--<StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
-            <Button Content="schoonmeersen image"></Button>
-            <Button Content="Campus schoonmeersen"></Button>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Ledeganck image"></Button>
-            <Button Content="Campus Ledeganck"></Button>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Ledeganck image"></Button>
-            <Button Content="Campus Ledeganck"></Button>
-        </StackPanel>
-    </StackPanel>-->
 </Page>
