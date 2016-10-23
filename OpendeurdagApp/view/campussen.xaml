@@ -11,19 +11,26 @@
     <Page.Resources>
         <Style x:Key="Center" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment"  Value="Center"/>
+            <Setter Property="Foreground" Value="White"></Setter>
         </Style>
         <Style x:Key="BoldCenter" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"></Setter>
         </Style>
         <Style x:Key="Titel" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20px"/>
             <Setter Property="HorizontalAlignment"  Value="Center"/>
             <Setter Property="Margin" Value="0, 0, 0, 5"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
         </Style>
         <Style x:Key="Tussentitel" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment"  Value="Center"/>
             <Setter Property="Margin" Value="0, 10, 0, 0"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+        <Style x:Key="Footer" TargetType="StackPanel">
+            <Setter Property="Margin" Value="0, 0, 0, 5"></Setter>
         </Style>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -39,10 +46,19 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Image Grid.Column="0" Grid.Row="0" Source="{Binding Foto}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
-            <TextBlock Text="{Binding Naam}" Style="{StaticResource Titel}"></TextBlock>
-            <TextBlock Text="Richtingen" Style="{StaticResource Tussentitel}" Tapped="Richting_OnTapped" ></TextBlock>
-            <ListView ItemsSource="{Binding Richtingen}" VerticalAlignment="Stretch">
+        <Grid Grid.Column="1" Grid.Row="0" Background="#0081C5" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock  Grid.Column="0" Grid.Row="0" Text="{Binding Naam}" Style="{StaticResource Titel}" ></TextBlock>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock Text="Richtingen" Style="{StaticResource Tussentitel}" Tapped="Richting_OnTapped" ></TextBlock>
+            <ListView  ItemsSource="{Binding Richtingen}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
@@ -51,11 +67,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Orientation="Vertical">
+            </StackPanel>
+            <StackPanel  Grid.Column="0" Grid.Row="2" Orientation="Vertical" Style="{StaticResource Footer}">
                 <TextBlock Text="Locatie" Style="{StaticResource Tussentitel}"/>
                 <TextBlock Text="{Binding Adres}" Style="{StaticResource Center}"/>
             </StackPanel>
-        </StackPanel>
+        </Grid>
         <Image Grid.Column="1" Grid.Row="1" Source="ms-appx:///Assets/mercator.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1">
             <TextBlock Text="Campus Mercator"></TextBlock>

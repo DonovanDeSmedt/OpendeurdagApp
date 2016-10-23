@@ -33,7 +33,7 @@
         </SplitView.Pane>
         <SplitView.Content>
             <StackPanel>
-                <TextBlock Text="Open"/>
+                <!--<TextBlock Text="Open"/>-->
                 <Frame Name="mainFrame"></Frame>
             </StackPanel>
         </SplitView.Content>
