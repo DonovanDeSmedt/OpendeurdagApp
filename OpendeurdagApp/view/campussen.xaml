@@ -9,9 +9,21 @@
     xmlns:model="using:OpendeurdagApp.model"
     mc:Ignorable="d">
     <Page.Resources>
+        <Style x:Key="Center" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment"  Value="Center"/>
+        </Style>
         <Style x:Key="BoldCenter" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Titel" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20px"/>
+            <Setter Property="HorizontalAlignment"  Value="Center"/>
+            <Setter Property="Margin" Value="0, 0, 0, 5"></Setter>
+        </Style>
+        <Style x:Key="Tussentitel" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment"  Value="Center"/>
+            <Setter Property="Margin" Value="0, 10, 0, 0"></Setter>
         </Style>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -26,54 +38,37 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button x:Name="ImgSchoonmeersen" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button.Background>
-                <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/schoonmeersen.jpg"/>
-            </Button.Background>
-        </Button>
-
+        <Image Grid.Column="0" Grid.Row="0" Source="{Binding Foto}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
-            <TextBlock Text="{Binding Naam}"></TextBlock>
-            <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}" Tapped="Richting_OnTapped" ></TextBlock>
-            <ListView ItemsSource="{Binding Richtingen}">
+            <TextBlock Text="{Binding Naam}" Style="{StaticResource Titel}"></TextBlock>
+            <TextBlock Text="Richtingen" Style="{StaticResource Tussentitel}" Tapped="Richting_OnTapped" ></TextBlock>
+            <ListView ItemsSource="{Binding Richtingen}" VerticalAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding Naam}"></TextBlock>
+                            <TextBlock Text="{Binding Naam}" Style="{StaticResource Center}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Locatie:" Padding="0,0,10, 0"/>
-                <TextBlock Text="{Binding Adres}"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Locatie" Style="{StaticResource Tussentitel}"/>
+                <TextBlock Text="{Binding Adres}" Style="{StaticResource Center}"/>
             </StackPanel>
         </StackPanel>
-        <Button x:Name="ImgMercator" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-            <Button.Background>
-                <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/mercator.jpg"/>
-            </Button.Background>
-        </Button>
+        <Image Grid.Column="1" Grid.Row="1" Source="ms-appx:///Assets/mercator.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1">
             <TextBlock Text="Campus Mercator"></TextBlock>
             <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
             <TextBlock Text="Locatie"></TextBlock>
         </StackPanel>
-        <Button x:Name="ImgAalst" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-            <Button.Background>
-                <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/aalst.jpg"/>
-            </Button.Background>
-        </Button>
+        <Image Grid.Column="0" Grid.Row="2" Source="ms-appx:///Assets/aalst.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
             <TextBlock Text="Campus Aalst"></TextBlock>
             <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
             <TextBlock Text="Locatie"></TextBlock>
         </StackPanel>
-        <Button x:Name="ImgLedeganck" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button.Background>
-                <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/ledeganck.jpg"/>
-            </Button.Background>
-        </Button>
+        <Image Grid.Column="1" Grid.Row="3" Source="ms-appx:///Assets/ledeganck.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="3">
             <TextBlock Text="Campus Ledganck"></TextBlock>
             <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>

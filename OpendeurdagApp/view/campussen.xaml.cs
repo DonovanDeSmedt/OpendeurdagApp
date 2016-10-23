@@ -29,7 +29,8 @@ namespace OpendeurdagApp.view
         {
             Adres = "Valentin Vaerweglaan 9000 Gent",
             Naam = "Campus Schoonmeersen",
-            Richtingen = listRichtingen
+            Richtingen = listRichtingen,
+            Foto = "ms-appx:///Assets/schoonmeersen.jpg"
         };
         private static Campus ledeganck = new Campus()
         {

@@ -11,5 +11,6 @@ namespace OpendeurdagApp.model
         public string Adres { get; set; }
         public string Naam { get; set; }
         public List<Richting> Richtingen { get; set; }
+        public string Foto { get; set; }
     }
 }
