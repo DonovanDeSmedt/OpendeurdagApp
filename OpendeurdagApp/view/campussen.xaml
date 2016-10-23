@@ -33,63 +33,96 @@
             <Setter Property="Margin" Value="0, 0, 0, 5"></Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!-- Mobile -->
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Image Grid.Column="0" Grid.Row="0" Source="{Binding Foto}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-        <Grid Grid.Column="1" Grid.Row="0" Background="#0081C5" >
+                    <VisualState.Setters>
+                        <Setter Target="desktopView.Visibility" Value="Collapsed" />
+                        <Setter Target="mobileView.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!-- Desktop -->
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="mobileView.Visibility" Value="Collapsed" />
+                        <Setter Target="desktopView.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <Grid x:Name="mobileView">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock  Grid.Column="0" Grid.Row="0" Text="{Binding Naam}" Style="{StaticResource Titel}" ></TextBlock>
-            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
-                <TextBlock Text="Richtingen" Style="{StaticResource Tussentitel}" Tapped="Richting_OnTapped" ></TextBlock>
-            <ListView  ItemsSource="{Binding Richtingen}" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding Naam}" Style="{StaticResource Center}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Image Grid.Column="0" Grid.Row="0" Source="{Binding Foto}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+            <Grid Grid.Column="1" Grid.Row="0" Background="#0081C5" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock  Grid.Column="0" Grid.Row="0" Text="{Binding Naam}" Style="{StaticResource Titel}" ></TextBlock>
+                <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+                    <TextBlock Text="Richtingen" Style="{StaticResource Tussentitel}" Tapped="Richting_OnTapped" ></TextBlock>
+                    <ListView  ItemsSource="{Binding Richtingen}" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Naam}" Style="{StaticResource Center}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <StackPanel  Grid.Column="0" Grid.Row="2" Orientation="Vertical" Style="{StaticResource Footer}">
+                    <TextBlock Text="Locatie" Style="{StaticResource Tussentitel}"/>
+                    <TextBlock Text="{Binding Adres}" Style="{StaticResource Center}"/>
+                </StackPanel>
+            </Grid>
+            <Image Grid.Column="1" Grid.Row="1" Source="ms-appx:///Assets/mercator.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1">
+                <TextBlock Text="Campus Mercator"></TextBlock>
+                <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
+                <TextBlock Text="Locatie"></TextBlock>
             </StackPanel>
-            <StackPanel  Grid.Column="0" Grid.Row="2" Orientation="Vertical" Style="{StaticResource Footer}">
-                <TextBlock Text="Locatie" Style="{StaticResource Tussentitel}"/>
-                <TextBlock Text="{Binding Adres}" Style="{StaticResource Center}"/>
+            <Image Grid.Column="0" Grid.Row="2" Source="ms-appx:///Assets/aalst.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
+                <TextBlock Text="Campus Aalst"></TextBlock>
+                <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
+                <TextBlock Text="Locatie"></TextBlock>
+            </StackPanel>
+            <Image Grid.Column="1" Grid.Row="3" Source="ms-appx:///Assets/ledeganck.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="3">
+                <TextBlock Text="Campus Ledganck"></TextBlock>
+                <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
+                <TextBlock Text="Locatie"></TextBlock>
             </StackPanel>
         </Grid>
-        <Image Grid.Column="1" Grid.Row="1" Source="ms-appx:///Assets/mercator.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1">
-            <TextBlock Text="Campus Mercator"></TextBlock>
-            <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
-            <TextBlock Text="Locatie"></TextBlock>
-        </StackPanel>
-        <Image Grid.Column="0" Grid.Row="2" Source="ms-appx:///Assets/aalst.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
-            <TextBlock Text="Campus Aalst"></TextBlock>
-            <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
-            <TextBlock Text="Locatie"></TextBlock>
-        </StackPanel>
-        <Image Grid.Column="1" Grid.Row="3" Source="ms-appx:///Assets/ledeganck.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="3">
-            <TextBlock Text="Campus Ledganck"></TextBlock>
-            <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
-            <TextBlock Text="Locatie"></TextBlock>
-        </StackPanel>
+        <Grid x:Name="desktopView">
+            <TextBlock Text="THIS IS THE DESKTOP"></TextBlock>
+        </Grid>
     </Grid>
 </Page>
