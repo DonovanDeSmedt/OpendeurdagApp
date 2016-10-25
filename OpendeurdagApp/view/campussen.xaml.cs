@@ -24,7 +24,7 @@ namespace OpendeurdagApp.view
     public sealed partial class campussen : Page
     {
         private static List<Richting> listRichtingen = new List<Richting>{new Richting() {Naam = "Toegepaste informatica"}, new Richting() { Naam = "Bedrijfsmanagement" } };
-        
+
         private static Campus schoonmeersen = new Campus()
         {
             Adres = "Valentin Vaerweglaan 9000 Gent",
