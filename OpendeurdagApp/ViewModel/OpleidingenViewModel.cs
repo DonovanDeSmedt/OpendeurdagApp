@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpendeurdagApp.Model
+namespace OpendeurdagApp.ViewModel
 {
-    public class Richting
+    class OpleidingenViewModel:ViewModelBase
     {
-        public string Naam { get; set; }
     }
 }

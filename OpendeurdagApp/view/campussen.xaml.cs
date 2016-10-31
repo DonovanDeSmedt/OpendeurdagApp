@@ -12,16 +12,16 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using OpendeurdagApp.model;
+using OpendeurdagApp.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace OpendeurdagApp.view
+namespace OpendeurdagApp.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class campussen : Page
+    public sealed partial class Campussen : Page
     {
         private static List<Richting> listRichtingen = new List<Richting>{new Richting() {Naam = "Toegepaste informatica"}, new Richting() { Naam = "Bedrijfsmanagement" } };
 
@@ -39,9 +39,8 @@ namespace OpendeurdagApp.view
             Richtingen = listRichtingen
         };
         private List<Campus> listCampussen = new List<Campus> { schoonmeersen, ledeganck };
-        
 
-        public campussen()
+        public Campussen()
         {
             this.InitializeComponent();
             this.DataContext = schoonmeersen;

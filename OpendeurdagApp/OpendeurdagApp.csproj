@@ -98,18 +98,27 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="model\Campus.cs" />
-    <Compile Include="model\Car.cs" />
-    <Compile Include="model\Richting.cs" />
+    <Compile Include="Model\Campus.cs" />
+    <Compile Include="Model\Car.cs" />
+    <Compile Include="Model\DAL\CampusRepository.cs" />
+    <Compile Include="Model\Richting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="view\campussen.xaml.cs">
-      <DependentUpon>campussen.xaml</DependentUpon>
+    <Compile Include="Utils\RelayCommand.cs" />
+    <Compile Include="ViewModel\CampussenViewModel.cs" />
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\OpleidingenViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\Campussen.xaml.cs">
+      <DependentUpon>Campussen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\cars.xaml.cs">
-      <DependentUpon>cars.xaml</DependentUpon>
+    <Compile Include="View\Cars.xaml.cs">
+      <DependentUpon>Cars.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\opleidingen.xaml.cs">
-      <DependentUpon>opleidingen.xaml</DependentUpon>
+    <Compile Include="View\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Opleidingen.xaml.cs">
+      <DependentUpon>Opleidingen.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -144,15 +153,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\campussen.xaml">
+    <Page Include="View\Campussen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\cars.xaml">
+    <Page Include="View\Cars.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\opleidingen.xaml">
+    <Page Include="View\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Opleidingen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

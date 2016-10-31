@@ -14,14 +14,14 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;   
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace OpendeurdagApp.view
+namespace OpendeurdagApp.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class opleidingen : Page
+    public sealed partial class Opleidingen : Page
     {
-        public opleidingen()
+        public Opleidingen()
         {
             this.InitializeComponent();
         }

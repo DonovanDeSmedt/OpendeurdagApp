@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpendeurdagApp.model
+namespace OpendeurdagApp.Model
 {
-    class Campus
+    public class Campus
     {
         public string Adres { get; set; }
         public string Naam { get; set; }
