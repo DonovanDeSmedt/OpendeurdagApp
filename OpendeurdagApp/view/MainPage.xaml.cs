@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace OpendeurdagApp.View
 {
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : UserControl
     {
         public MainPage()
         {

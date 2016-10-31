@@ -1,11 +1,13 @@
-﻿<Page
+﻿<UserControl
     x:Class="OpendeurdagApp.View.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OpendeurdagApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
 
     <SplitView x:Name="MySplitView" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
                CompactPaneLength="50" OpenPaneLength="150">
@@ -32,16 +34,11 @@
             </StackPanel>
         </SplitView.Pane>
         <SplitView.Content>
-            <!--<StackPanel>
-                --><!--<TextBlock Text="Open"/>--><!--
-                <Frame Name="mainFrame"></Frame>
-                
-            </StackPanel>-->
-          <ContentControl Content="{Binding CurrentData}" ContentTemplate="{Binding CurrentData.Template}">
+            <ContentControl Content="{Binding CurrentData}" ContentTemplate="{Binding CurrentData.Template}">
 
           </ContentControl>
         </SplitView.Content>
     </SplitView>
 
 
-</Page>
+</UserControl>

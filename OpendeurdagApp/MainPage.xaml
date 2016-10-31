@@ -11,7 +11,7 @@
         <viewModel:MainPageViewModel/>
     </Page.DataContext>
     
-    <ContentControl Content="{Binding}" ContentTemplate="{Binding Template}">
+    <ContentControl Content="{Binding}" ContentTemplate="{Binding Template}" >
         
     </ContentControl>
 </Page>

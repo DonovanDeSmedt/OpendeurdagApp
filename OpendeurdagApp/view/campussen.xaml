@@ -5,8 +5,7 @@
     xmlns:local="using:OpendeurdagApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:objectModel="using:System.Collections.ObjectModel"
-    mc:Ignorable="d">
+   mc:Ignorable="d">
     <Page.Resources>
         <Style x:Key="Center" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment"  Value="Center"/>
@@ -81,7 +80,21 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Grid x:Name="mobileView">
+        <ListView x:Name="mobileView" ItemsSource="{Binding Campussen}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Naam}"></TextBlock>
+                        <TextBlock Text="{Binding Adres}"></TextBlock>
+                        <TextBlock Text="{Binding Richtingen}"></TextBlock>
+                        <Image Source="{Binding Foto}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        
+       <!-- <Grid x:Name="mobileView">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -92,6 +105,7 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+
             <Image Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
             <Grid Grid.Column="1" Grid.Row="0" Background="#0081C5" >
                 <Grid.ColumnDefinitions>
@@ -102,6 +116,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
+
                 <TextBlock  Grid.Column="0" Grid.Row="0" Text="{Binding Naam}" Style="{StaticResource TitelMobile}" ></TextBlock>
                 <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
                     <TextBlock Text="Richtingen" Style="{StaticResource TussentitelMobile}" Tapped="Richting_OnTapped" ></TextBlock>
@@ -138,7 +153,7 @@
                 <TextBlock Text="Richtingen" Style="{StaticResource BoldCenterDekstop}"></TextBlock>
                 <TextBlock Text="Locatie"></TextBlock>
             </StackPanel>
-        </Grid>
+        </Grid>-->
         <Grid x:Name="desktopView" Height="1000">
             <Grid.Background>
                 <ImageBrush Stretch="None" 

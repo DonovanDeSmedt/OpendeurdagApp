@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OpendeurdagApp.Model;
+using OpendeurdagApp.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,31 +24,29 @@ namespace OpendeurdagApp.View
     /// </summary>
     public sealed partial class Campussen : Page
     {
-        private static List<Richting> listRichtingen = new List<Richting>{new Richting() {Naam = "Toegepaste informatica"}, new Richting() { Naam = "Bedrijfsmanagement" } };
-
-        private static Campus schoonmeersen = new Campus()
-        {
-            Adres = "Valentin Vaerweglaan 9000 Gent",
-            Naam = "Campus Schoonmeersen",
-            Richtingen = listRichtingen,
-            Foto = "ms-appx:///Assets/schoonmeersen.jpg"
-        };
-        private static Campus ledeganck = new Campus()
-        {
-            Adres = "Centrum 9000 Gent",
-            Naam = "Campus Ledeganck",
-            Richtingen = listRichtingen
-        };
-        private List<Campus> listCampussen = new List<Campus> { schoonmeersen, ledeganck };
+        private CampussenViewModel cvm;
 
         public Campussen()
         {
             this.InitializeComponent();
-            this.DataContext = schoonmeersen;
+            cvm = DataContext as CampussenViewModel;
         }
         private void Richting_OnTapped(object sender, TappedRoutedEventArgs e)
         {
             //Go to view opleidingen en de listview van de opleiding openklikken
+        }
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            try
+            {
+                if (!cvm.IsDataLoaded)
+                {
+                    await cvm.LoadCampussen();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
     
