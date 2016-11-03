@@ -32,7 +32,7 @@ namespace OpendeurdagApp.view
             opleidingenList.Add(informatica);
             opleidingenList.Add(bedrijfsmanagement);
 
-            this.DataContext = opleidingenList;
+            this.DataContext = informatica;
 
         }
 
