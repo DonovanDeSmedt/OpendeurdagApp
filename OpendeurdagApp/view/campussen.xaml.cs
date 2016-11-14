@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +26,7 @@ namespace OpendeurdagApp.View
     public sealed partial class Campussen : Page
     {
         private CampussenViewModel cvm;
+        public Campus campus = new Campus() {Adres = "TEST", Naam = "TESTNAAm"};
 
         public Campussen()
         {
@@ -48,6 +50,7 @@ namespace OpendeurdagApp.View
             {
             }
         }
+
     }
     
 }
