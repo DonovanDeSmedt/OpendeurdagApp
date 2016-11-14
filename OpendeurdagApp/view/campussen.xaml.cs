@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OpendeurdagApp.Model;
+using OpendeurdagApp.Model.DAL;
 using OpendeurdagApp.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -26,16 +28,20 @@ namespace OpendeurdagApp.View
     public sealed partial class Campussen : Page
     {
         private CampussenViewModel cvm;
-        public Campus campus = new Campus() {Adres = "TEST", Naam = "TESTNAAm"};
-
+        private ObservableCollection<Richting> Richtingen;
+        public ObservableCollection<Gebouw> gebouwen;
         public Campussen()
         {
             this.InitializeComponent();
-            cvm = DataContext as CampussenViewModel;
+            Richtingen = new ObservableCollection<Richting>(CampusRepository.GetCampussen()[0].Richtingen);
+            gebouwen = new ObservableCollection<Gebouw>();
         }
-        private void Richting_OnTapped(object sender, TappedRoutedEventArgs e)
+        private void OnChangeCampus(object sender, ItemClickEventArgs e)
         {
             //Go to view opleidingen en de listview van de opleiding openklikken
+            Campus campus = (Campus) e.ClickedItem;
+            CampussenViewModel vm = DataContext as CampussenViewModel;
+            vm.Campus = campus;
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

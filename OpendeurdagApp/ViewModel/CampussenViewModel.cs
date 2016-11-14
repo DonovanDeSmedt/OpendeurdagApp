@@ -13,7 +13,7 @@ using OpendeurdagApp.Utils;
 
 namespace OpendeurdagApp.ViewModel
 {
-    class CampussenViewModel: ViewModelBase
+    public class CampussenViewModel: ViewModelBase
     {
         private MainPageViewModel _mainvm;
         private readonly string url = "http://localhost:51420/api/";
@@ -25,12 +25,20 @@ namespace OpendeurdagApp.ViewModel
             set { campussen = value; RaisePropertyChanged(); }
         }
 
+        private Campus campus;
+        public Campus Campus
+        {
+            get { return campus; }
+            set { campus = value; RaisePropertyChanged(); }
+        }
+
         public bool IsDataLoaded { get; set; }
         public CampussenViewModel(MainPageViewModel mainvm)
         {
             _mainvm = mainvm;
             //Eerst loadingscherm (dummydata) tonen terwijl de data wordt opgehaald
             Campussen = new ObservableCollection<Campus>(CampusRepository.GetCampussen());
+            Campus = Campussen[0];
             CampusDetailCommand = new RelayCommand(campus => ShowDetailsCampus(campus));
             //GetCampussen();
         }
@@ -40,6 +48,7 @@ namespace OpendeurdagApp.ViewModel
             Campus campus = (Campus) o;
             _mainvm.CampusDetailCommand.Execute(campus);
         }
+
 
         private async Task GetCampussen()
         {

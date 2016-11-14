@@ -2,7 +2,9 @@
   "dependencies": {
     "EntityFramework": "6.1.3",
     "Json.NET.Web": "1.0.49",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0",
+    "WinRTTriggers": "1.6.0"
   },
   "frameworks": {
     "uap10.0": {}
