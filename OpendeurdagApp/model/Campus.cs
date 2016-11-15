@@ -58,6 +58,20 @@ namespace OpendeurdagApp.Model
                 RaisePropertyChanged();
             }
         }
+        private List<Gebouw> gebouwen;
+
+        public List<Gebouw> Gebouwen
+        {
+            get
+            {
+                return gebouwen;
+            }
+            set
+            {
+                gebouwen = value;
+                RaisePropertyChanged();
+            }
+        }
 
         private string foto;
         public string Foto

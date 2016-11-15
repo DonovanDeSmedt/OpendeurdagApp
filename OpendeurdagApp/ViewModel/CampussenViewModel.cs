@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using OpendeurdagApp.Model;
 using OpendeurdagApp.Model.DAL;
+using OpendeurdagApp.Utils;
 
 namespace OpendeurdagApp.ViewModel
 {
-    class CampussenViewModel: ViewModelBase
+    public class CampussenViewModel: ViewModelBase
     {
-        private readonly string url = "http://localhost:19962/api/";
-
+        private MainPageViewModel _mainvm;
+        private readonly string url = "http://localhost:51420/api/";
+        public RelayCommand CampusDetailCommand { get; set; }
         private ObservableCollection<Campus> campussen;
         public ObservableCollection<Campus> Campussen
         {
@@ -23,20 +25,36 @@ namespace OpendeurdagApp.ViewModel
             set { campussen = value; RaisePropertyChanged(); }
         }
 
-        public bool IsDataLoaded { get; set; }
-        public CampussenViewModel()
+        private Campus campus;
+        public Campus Campus
         {
+            get { return campus; }
+            set { campus = value; RaisePropertyChanged(); }
+        }
+
+        public bool IsDataLoaded { get; set; }
+        public CampussenViewModel(MainPageViewModel mainvm)
+        {
+            _mainvm = mainvm;
             //Eerst loadingscherm (dummydata) tonen terwijl de data wordt opgehaald
             Campussen = new ObservableCollection<Campus>(CampusRepository.GetCampussen());
-            GetCampussen();
+            Campus = Campussen[0];
+            CampusDetailCommand = new RelayCommand(campus => ShowDetailsCampus(campus));
+            //GetCampussen();
         }
+
+        private void ShowDetailsCampus(Object o)
+        {
+            Campus campus = (Campus) o;
+            _mainvm.CampusDetailCommand.Execute(campus);
+        }
+
 
         private async Task GetCampussen()
         {
             HttpClient client = new HttpClient();
             var jsonString = await client.GetStringAsync(url+"campus");
             Campussen = JsonConvert.DeserializeObject<ObservableCollection<Campus>>(jsonString);
-            Debug.WriteLine(Campussen[0].Naam);
             IsDataLoaded = true;
         }
 

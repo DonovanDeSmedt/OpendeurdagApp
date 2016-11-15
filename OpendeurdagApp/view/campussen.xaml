@@ -1,54 +1,58 @@
 ﻿<Page
-    x:Class="OpendeurdagApp.View.Campussen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OpendeurdagApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   mc:Ignorable="d">
+    xmlns:interop="using:Windows.UI.Xaml.Interop"
+    xmlns:model="using:OpendeurdagApp.Model"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:triggers="using:WinRT.Triggers"
+    x:Class="OpendeurdagApp.View.Campussen"
+    mc:Ignorable="d">
     <Page.Resources>
         <Style x:Key="Center" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment"  Value="Center"/>
         </Style>
         <Style x:Key="CenterMobile" TargetType="TextBlock" BasedOn="{StaticResource Center}">
-            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
         <Style x:Key="CenterDesktop" TargetType="TextBlock" BasedOn="{StaticResource Center}">
-            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
         <Style x:Key="BoldCenter" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style x:Key="BoldCenterMobile" TargetType="TextBlock" BasedOn="{StaticResource BoldCenter}">
-            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
         <Style x:Key="BoldCenterDekstop" TargetType="TextBlock" BasedOn="{StaticResource BoldCenter}">
-            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
         <Style x:Key="Titel" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20px"/>
             <Setter Property="HorizontalAlignment"  Value="Center"/>
-            <Setter Property="Margin" Value="0, 0, 0, 5"></Setter>
+            <Setter Property="Margin" Value="0, 0, 0, 5"/>
         </Style>
         <Style x:Key="TitelMobile" TargetType="TextBlock" BasedOn="{StaticResource Titel}">
-            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
         <Style x:Key="TitelDekstop" TargetType="TextBlock" BasedOn="{StaticResource Titel}">
-            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
         <Style x:Key="Tussentitel" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment"  Value="Center"/>
-            <Setter Property="Margin" Value="0, 10, 0, 0"></Setter>
+            <Setter Property="Margin" Value="0, 10, 0, 0"/>
         </Style>
         <Style x:Key="TussentitelMobile" TargetType="TextBlock" BasedOn="{StaticResource Tussentitel}">
-            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
-        <Style x:Key="TussentitelDekstop" TargetType="TextBlock" BasedOn="{StaticResource Tussentitel}"> 
-            <Setter Property="Foreground" Value="Black"></Setter>
+        <Style x:Key="TussentitelDekstop" TargetType="TextBlock" BasedOn="{StaticResource Tussentitel}">
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
         <Style x:Key="Footer" TargetType="StackPanel">
-            <Setter Property="Margin" Value="0, 0, 0, 5"></Setter>
+            <Setter Property="Margin" Value="0, 0, 0, 5"/>
         </Style>
     </Page.Resources>
     <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -79,81 +83,21 @@
 
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <StackPanel Orientation="Vertical" x:Name="mobileView">
+            <ListView x:Name="ListViewCampussen" ItemsSource="{Binding Campussen}" IsItemClickEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Naam}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Command="{Binding CampusDetailCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListViewCampussen}" Content="Details campus"/>
+        </StackPanel>
 
-        <ListView x:Name="mobileView" ItemsSource="{Binding Campussen}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Naam}"></TextBlock>
-                        <TextBlock Text="{Binding Adres}"></TextBlock>
-                        <TextBlock Text="{Binding Richtingen}"></TextBlock>
-                        <Image Source="{Binding Foto}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        
-        
-       <!-- <Grid x:Name="mobileView">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
 
-            <Image Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-            <Grid Grid.Column="1" Grid.Row="0" Background="#0081C5" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                </Grid.RowDefinitions>
 
-                <TextBlock  Grid.Column="0" Grid.Row="0" Text="{Binding Naam}" Style="{StaticResource TitelMobile}" ></TextBlock>
-                <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
-                    <TextBlock Text="Richtingen" Style="{StaticResource TussentitelMobile}" Tapped="Richting_OnTapped" ></TextBlock>
-                    <ListView  ItemsSource="{Binding Richtingen}" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Naam}" Style="{StaticResource CenterMobile}"></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
-                <StackPanel  Grid.Column="0" Grid.Row="2" Orientation="Vertical" Style="{StaticResource Footer}">
-                    <TextBlock Text="Locatie" Style="{StaticResource TussentitelMobile}"/>
-                    <TextBlock Text="{Binding Adres}" Style="{StaticResource CenterMobile}"/>
-                </StackPanel>
-            </Grid>
-            <Image Grid.Column="1" Grid.Row="1" Source="ms-appx:///Assets/mercator.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1">
-                <TextBlock Text="Campus Mercator"></TextBlock>
-                <TextBlock Text="Richtingen" Style="{StaticResource BoldCenterMobile}"></TextBlock>
-                <TextBlock Text="Locatie"></TextBlock>
-            </StackPanel>
-            <Image Grid.Column="0" Grid.Row="2" Source="ms-appx:///Assets/aalst.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
-                <TextBlock Text="Campus Aalst"></TextBlock>
-                <TextBlock Text="Richtingen" Style="{StaticResource BoldCenterMobile}"></TextBlock>
-                <TextBlock Text="Locatie"></TextBlock>
-            </StackPanel>
-            <Image Grid.Column="1" Grid.Row="3" Source="ms-appx:///Assets/ledeganck.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="3">
-                <TextBlock Text="Campus Ledganck"></TextBlock>
-                <TextBlock Text="Richtingen" Style="{StaticResource BoldCenterDekstop}"></TextBlock>
-                <TextBlock Text="Locatie"></TextBlock>
-            </StackPanel>
-        </Grid>-->
         <Grid x:Name="desktopView" Height="1000">
             <Grid.Background>
                 <ImageBrush Stretch="None" 
@@ -161,48 +105,48 @@
                             AlignmentY="Top" AlignmentX="Center"/>
             </Grid.Background>
             <Hub>
-            <Hub.Header>
-                <Grid Margin="20,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="ms-appx:///Assets/HG-woordmerk.png" Margin="-30,-14,0,0" />
-                </Grid>
-            </Hub.Header>
-            <HubSection Width="400"  Header="Selecteer campus" Background="#B2FFFFFF" >
-                <DataTemplate>
-                    <ListView  ItemsSource="{Binding Richtingen}" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding Naam}" Style="{StaticResource CenterDesktop}" ></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </DataTemplate>
-            </HubSection>
+                <Hub.Header>
+                    <Grid Margin="20,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="ms-appx:///Assets/HG-woordmerk.png" Margin="-30,-14,0,0" />
+                    </Grid>
+                </Hub.Header>
+                <HubSection Width="400"  Header="Selecteer campus" Background="#B2FFFFFF" >
+                    <DataTemplate>
+                        <ListView Name="ListViewCampussenDesktop"  ItemsSource="{Binding Campussen}" ItemClick="OnChangeCampus" IsItemClickEnabled="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Naam}" Style="{StaticResource CenterDesktop}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </DataTemplate>
+                </HubSection>
                 <HubSection IsHeaderInteractive="True" MinWidth="350" Background="#D8FFFFFF" Header="Richtingen op de campus" HorizontalAlignment="Center">
-                <DataTemplate>
+                    <DataTemplate>
                         <Grid >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            
-                            <Image Grid.Column="0" Grid.Row="0" Source="{Binding Foto}" MaxWidth="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-                            <TextBlock  Grid.Column="0" Grid.Row="1" Text="{Binding Naam}" Style="{StaticResource TitelDekstop}" ></TextBlock>
+
+                            <Image Grid.Column="0" Grid.Row="0" Source="{Binding Campus.Foto}" MaxWidth="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <TextBlock  Grid.Column="0" Grid.Row="1" Text="{Binding Campus.Naam}" Style="{StaticResource TitelDekstop}" />
                             <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">
-                                <TextBlock Text="Richtingen" Style="{StaticResource TussentitelDekstop}" Tapped="Richting_OnTapped" ></TextBlock>
-                                <ListView  ItemsSource="{Binding Richtingen}" >
+                                <TextBlock Text="Richtingen" Style="{StaticResource TussentitelDekstop}" />
+                                <ListView  ItemsSource="{Binding Campus.Richtingen}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="{Binding Naam}" Style="{StaticResource CenterDesktop}"></TextBlock>
+                                                <TextBlock Text="{Binding Naam}" Style="{StaticResource CenterDesktop}"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -210,43 +154,44 @@
                             </StackPanel>
                         </Grid>
                     </DataTemplate>
-            </HubSection>
+                </HubSection>
                 <HubSection IsHeaderInteractive="True" Background="#CCFFFFFF" MinWidth="350"  Header="Locatie campus">
-                <DataTemplate>
-                    <StackPanel>
+                    <DataTemplate>
+                        <StackPanel>
                             <Grid >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock  Grid.Column="0" Grid.Row="0" Text="{Binding Naam}" Style="{StaticResource TitelDekstop}" ></TextBlock>
+                                <TextBlock  Grid.Column="0" Grid.Row="0" Text="{Binding Naam}" Style="{StaticResource TitelDekstop}" />
                                 <StackPanel  Grid.Column="0" Grid.Row="1" Orientation="Vertical" Style="{StaticResource Footer}">
                                     <TextBlock Text="V. Vaerwyckweg 1 (auto, post)" Style="{StaticResource Center}"/>
                                     <TextBlock Text="Voskenslaan 270" Style="{StaticResource Center}"/>
                                     <TextBlock Text="9000 Gent" Style="{StaticResource Center}"/>
                                     <TextBlock Text="09 243 20 04)" Style="{StaticResource Center}"/>
+                                    <TextBlock Text="{Binding Campus.Adres}"></TextBlock>
                                 </StackPanel>
-                                <Image Grid.Column="0" Grid.Row="2" Source="ms-appx:///Assets/plan_schoonmeersen.JPG" MaxWidth="250" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                                <Image Grid.Column="0" Grid.Row="2" Source="ms-appx:///Assets/plan_schoonmeersen.JPG" MaxWidth="250" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </Grid>
                         </StackPanel>
-                </DataTemplate>
-            </HubSection>
+                    </DataTemplate>
+                </HubSection>
                 <HubSection IsHeaderInteractive="True" Background="#D8FFFFFF" MinWidth="350"  Header="Gebouwen campus">
                     <DataTemplate>
                         <StackPanel>
                             <Grid >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock  Grid.Column="0" Grid.Row="0" Text="Gebouwen" Style="{StaticResource Titel}" ></TextBlock>
+                                <TextBlock  Grid.Column="0" Grid.Row="0" Text="Gebouwen" Style="{StaticResource Titel}" />
                                 <StackPanel  Grid.Column="0" Grid.Row="1" Orientation="Vertical" Style="{StaticResource Footer}">
                                     <TextBlock Text="Gebouw B (GSCHB)" Style="{StaticResource TussentitelDekstop}"/>
                                     <TextBlock Text="Gebouw C (GSCHC)" Style="{StaticResource TussentitelDekstop}"/>
@@ -261,30 +206,5 @@
                 </HubSection>
             </Hub>
         </Grid>
-        <!--<Grid x:Name="desktopView">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
-                <Image Source="ms-appx:///Assets/ledeganck.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                <ListView x:Name="listView" RenderTransformOrigin="0.5,0.5">
-                    <ListViewItem Tapped="Campus_OnTapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="{Binding Naam}"/>
-                    <TextBlock x:Name="txbSchoonmeersen" Visibility="Collapsed" TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content">
-                    <Run Text="Campus schoonmeersen"/>
-                    </TextBlock>
-                </ListView>
-                <TextBlock Text="Campus Ledganck"></TextBlock>
-                <TextBlock Text="Richtingen" Style="{StaticResource BoldCenter}"></TextBlock>
-                <TextBlock Text="Locatie"></TextBlock>
-            </StackPanel>
-        </Grid>-->
     </Grid>
 </Page>

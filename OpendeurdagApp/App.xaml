@@ -11,6 +11,9 @@
         <DataTemplate x:Key="CampussenViewModel">
             <view:Campussen/>
         </DataTemplate>
+        <DataTemplate x:Key="CampusDetailViewModel">
+            <view:CampusDetail/>
+        </DataTemplate>
         <DataTemplate x:Key="OpleidingenViewModel">
             <view:Opleidingen/>
         </DataTemplate>
