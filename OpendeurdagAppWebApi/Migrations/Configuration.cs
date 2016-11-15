@@ -1,20 +1,18 @@
-using OpendeurdagAppWeb.Models;
-
-namespace OpendeurdagAppWeb.Migrations
+namespace OpendeurdagAppWebApi.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<OpendeurdagAppWeb.Models.OpendeurdagAppWebContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<OpendeurdagAppWebApi.Models.OpendeurdagAppWebApiContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(OpendeurdagAppWeb.Models.OpendeurdagAppWebContext context)
+        protected override void Seed(OpendeurdagAppWebApi.Models.OpendeurdagAppWebApiContext context)
         {
             //  This method will be called after migrating to the latest version.
 

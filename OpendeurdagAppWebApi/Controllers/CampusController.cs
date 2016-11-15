@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using OpendeurdagAppWeb.Models;
+using OpendeurdagAppWebApi.Models;
 
-namespace OpendeurdagAppWeb.Controllers
+namespace OpendeurdagAppWebApi.Controllers
 {
     public class CampusController : ApiController
     {
-        private OpendeurdagAppWebContext db = new OpendeurdagAppWebContext();
+        private OpendeurdagAppWebApiContext db = new OpendeurdagAppWebApiContext();
 
         // GET: api/Campus
         public IQueryable<Campus> GetCampus()
         {
-            Debug.WriteLine(db.Campus);
             return db.Campus;
         }
 

@@ -33,6 +33,15 @@ namespace OpendeurdagApp.Model
             }
         }
 
+        private string omschrijving;
+
+        public string Omschrijving
+        {
+            get { return omschrijving; }
+            set { omschrijving = value; RaisePropertyChanged(); }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")

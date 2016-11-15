@@ -14,7 +14,7 @@ namespace OpendeurdagApp.ViewModel
 {
     class CampussenViewModel: ViewModelBase
     {
-        private readonly string url = "http://localhost:51420/api/";
+        private readonly string url = "http://localhost:19962/api/";
 
         private ObservableCollection<Campus> campussen;
         public ObservableCollection<Campus> Campussen

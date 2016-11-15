@@ -6,12 +6,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:OpendeurdagApp.ViewModel"
     mc:Ignorable="d">
-    
+
     <Page.DataContext>
         <viewModel:MainPageViewModel/>
     </Page.DataContext>
-    
+
     <ContentControl Content="{Binding}" ContentTemplate="{Binding Template}" >
-        
+
     </ContentControl>
 </Page>

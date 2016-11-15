@@ -14,15 +14,21 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel d:LayoutOverrides="Width, LeftPosition, RightPosition" VerticalAlignment="Top" Margin="0,72,0,0">
             <ListViewHeaderItem Padding="12,8" MinHeight="0" Margin="0,0,0,4" HorizontalContentAlignment="Center" FontSize="32" FontWeight="Bold" Content="Opleidingen"/>
-            <ListView x:Name="listView" RenderTransformOrigin="0.5,0.5">
-                
-                <ListViewItem Tapped="ListViewItemInformatica_Tapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="{Binding Naam}"/>
-                <TextBlock x:Name="textBlockInformatica" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content">
-                    <Run Text="{Binding Beschrijving}"/>
-                </TextBlock>
-                <ListViewItem Tapped="ListViewItemBedrijfsmanagement_OnTapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="Bedrijfsmanagement"/>
+            <ListView x:Name="listView" RenderTransformOrigin="0.5,0.5" ItemsSource="{Binding Richtingen}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                        <ListViewItem Tapped="ListViewItem_Tapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="{Binding Naam}"/>
+                            <TextBlock x:Name="textblockRichting" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content"
+                    Text="{Binding Omschrijving}">
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+          
+                <!--<ListViewItem Tapped="ListViewItemBedrijfsmanagement_OnTapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="Bedrijfsmanagement"/>
                 <TextBlock x:Name="textBlockBedrijfsmanagsement" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content">
-                    <Run Text="Als je echt niet weet wat te doen en make-up over hebt dan is dit DE opleiding!"/></TextBlock>            
+                    <Run Text="Als je echt niet weet wat te doen en make-up over hebt dan is dit DE opleiding!"/></TextBlock>-->            
             </ListView>
         </StackPanel>
     </Grid>

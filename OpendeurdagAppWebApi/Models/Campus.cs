@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OpendeurdagAppWeb.Models
+namespace OpendeurdagAppWebApi.Models
 {
     public class Campus
     {
@@ -12,10 +12,5 @@ namespace OpendeurdagAppWeb.Models
         public string Adres { get; set; }
         public virtual ICollection<Richting> Richtingen { get; set; }
         public string Foto { get; set; }
-
-        public Campus()
-        {
-            
-        }
     }
 }
