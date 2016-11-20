@@ -11,6 +11,7 @@ namespace OpendeurdagAppWebApi.Models
         public string Naam { get; set; }
         public string Adres { get; set; }
         public virtual ICollection<Richting> Richtingen { get; set; }
+        public virtual ICollection<Gebouw> Gebouwen { get; set; }
         public string Foto { get; set; }
     }
 }

@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using Newtonsoft.Json;
 
 namespace OpendeurdagAppWeb.Models
 {
-    public class Richting
+    public class Gebouw
     {
-        public int RichtingId { get; set; }
-        public string Omschrijving { get; set; }
+        public int GebouwId { get; set; }
         [ForeignKey("Campus")]
         public int Campus_Id { get; set; }
         public string Naam { get; set; }

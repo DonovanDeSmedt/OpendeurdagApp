@@ -6,8 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interop="using:Windows.UI.Xaml.Interop"
     xmlns:model="using:OpendeurdagApp.Model"
-    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:triggers="using:WinRT.Triggers"
     x:Class="OpendeurdagApp.View.Campussen"
     mc:Ignorable="d">
     <Page.Resources>

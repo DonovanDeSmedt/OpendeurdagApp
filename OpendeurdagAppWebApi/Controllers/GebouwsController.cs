@@ -8,48 +8,48 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using OpendeurdagAppWeb.Models;
+using OpendeurdagAppWebApi.Models;
 
-namespace OpendeurdagAppWeb.Controllers
+namespace OpendeurdagAppWebApi.Controllers
 {
-    public class CampusController : ApiController
+    public class GebouwsController : ApiController
     {
-        private OpendeurdagAppWebContext db = new OpendeurdagAppWebContext();
+        private OpendeurdagAppWebApiContext db = new OpendeurdagAppWebApiContext();
 
-        // GET: api/Campus
-        public IQueryable<Campus> GetCampus()
+        // GET: api/Gebouws
+        public IQueryable<Gebouw> GetGebouws()
         {
-            return db.Campus;
+            return db.Gebouws;
         }
 
-        // GET: api/Campus/5
-        [ResponseType(typeof(Campus))]
-        public IHttpActionResult GetCampus(int id)
+        // GET: api/Gebouws/5
+        [ResponseType(typeof(Gebouw))]
+        public IHttpActionResult GetGebouw(int id)
         {
-            Campus campus = db.Campus.Find(id);
-            if (campus == null)
+            Gebouw gebouw = db.Gebouws.Find(id);
+            if (gebouw == null)
             {
                 return NotFound();
             }
 
-            return Ok(campus);
+            return Ok(gebouw);
         }
 
-        // PUT: api/Campus/5
+        // PUT: api/Gebouws/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCampus(int id, Campus campus)
+        public IHttpActionResult PutGebouw(int id, Gebouw gebouw)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != campus.CampusId)
+            if (id != gebouw.GebouwId)
             {
                 return BadRequest();
             }
 
-            db.Entry(campus).State = EntityState.Modified;
+            db.Entry(gebouw).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace OpendeurdagAppWeb.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CampusExists(id))
+                if (!GebouwExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace OpendeurdagAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Campus
-        [ResponseType(typeof(Campus))]
-        public IHttpActionResult PostCampus(Campus campus)
+        // POST: api/Gebouws
+        [ResponseType(typeof(Gebouw))]
+        public IHttpActionResult PostGebouw(Gebouw gebouw)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Campus.Add(campus);
+            db.Gebouws.Add(gebouw);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = campus.CampusId }, campus);
+            return CreatedAtRoute("DefaultApi", new { id = gebouw.GebouwId }, gebouw);
         }
 
-        // DELETE: api/Campus/5
-        [ResponseType(typeof(Campus))]
-        public IHttpActionResult DeleteCampus(int id)
+        // DELETE: api/Gebouws/5
+        [ResponseType(typeof(Gebouw))]
+        public IHttpActionResult DeleteGebouw(int id)
         {
-            Campus campus = db.Campus.Find(id);
-            if (campus == null)
+            Gebouw gebouw = db.Gebouws.Find(id);
+            if (gebouw == null)
             {
                 return NotFound();
             }
 
-            db.Campus.Remove(campus);
+            db.Gebouws.Remove(gebouw);
             db.SaveChanges();
 
-            return Ok(campus);
+            return Ok(gebouw);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace OpendeurdagAppWeb.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CampusExists(int id)
+        private bool GebouwExists(int id)
         {
-            return db.Campus.Count(e => e.CampusId == id) > 0;
+            return db.Gebouws.Count(e => e.GebouwId == id) > 0;
         }
     }
 }

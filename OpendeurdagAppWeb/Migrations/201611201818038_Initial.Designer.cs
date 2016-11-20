@@ -13,7 +13,7 @@ namespace OpendeurdagAppWeb.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201610311629091_Initial"; }
+            get { return "201611201818038_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -109,6 +109,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\GebouwsController.cs" />
     <Compile Include="Controllers\RichtingsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -120,6 +121,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Campus.cs" />
+    <Compile Include="Models\Gebouw.cs" />
     <Compile Include="Models\OpendeurdagAppWebApiContext.cs" />
     <Compile Include="Models\Richting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

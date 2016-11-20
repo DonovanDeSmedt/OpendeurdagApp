@@ -15,11 +15,13 @@ namespace OpendeurdagAppWeb.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public OpendeurdagAppWebContext() : base("OpendeurdagAppWebContext")
+        public OpendeurdagAppWebContext() : base("name=OpendeurdagAppWebContext")
         {
         }
 
         public System.Data.Entity.DbSet<OpendeurdagAppWeb.Models.Campus> Campus { get; set; }
+
+        public System.Data.Entity.DbSet<OpendeurdagAppWeb.Models.Gebouw> Gebouws { get; set; }
 
         public System.Data.Entity.DbSet<OpendeurdagAppWeb.Models.Richting> Richtings { get; set; }
     }

@@ -10,7 +10,7 @@
     <Page.Resources>
         <DataTemplate x:DataType="model:Gebouw" x:Key="GebouwDataTemplate">
             <StackPanel HorizontalAlignment="Center">
-                <Image Width="150" Source="{x:Bind Foto}" />
+                <Image Width="150" Source="ms-appx:///Assets/building.png" />
                 <TextBlock FontSize="16" Text="{x:Bind Naam}" HorizontalAlignment="Center" />
             </StackPanel>
         </DataTemplate>
