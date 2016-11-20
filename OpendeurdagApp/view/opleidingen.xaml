@@ -19,9 +19,8 @@
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
                         <ListViewItem Tapped="ListViewItem_Tapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="{Binding Naam}"/>
-                            <TextBlock x:Name="textblockRichting" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content"
-                    Text="{Binding Omschrijving}">
-                            </TextBlock>
+                        <TextBlock x:Name="textblockRichting" Visibility="Visible" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content"
+                    ><Run Text="{Binding Omschrijving}"></Run></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
