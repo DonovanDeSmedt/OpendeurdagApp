@@ -40,7 +40,7 @@ namespace OpendeurdagApp.ViewModel
             Campussen = new ObservableCollection<Campus>(CampusRepository.GetCampussen());
             Campus = Campussen[0];
             CampusDetailCommand = new RelayCommand(campus => ShowDetailsCampus(campus));
-            //GetCampussen();
+            GetCampussen();
         }
 
         private void ShowDetailsCampus(Object o)

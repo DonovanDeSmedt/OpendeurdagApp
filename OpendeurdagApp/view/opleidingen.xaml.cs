@@ -37,18 +37,7 @@ namespace OpendeurdagApp.View
             
         }
 
-        //private void ListViewItemBedrijfsmanagement_OnTapped(object sender, TappedRoutedEventArgs e)
-        //{
-        //    if (textBlockBedrijfsmanagsement.Visibility == Visibility.Visible)
-        //    {
-        //        textBlockBedrijfsmanagsement.Visibility = Visibility.Collapsed;
-        //    }
-        //    else
-        //    {
-        //        textBlockBedrijfsmanagsement.Visibility = Visibility.Visible;
-        //    }
 
-        //}
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

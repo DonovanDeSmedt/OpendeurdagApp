@@ -22,5 +22,7 @@ namespace OpendeurdagAppWebApi.Models
         public System.Data.Entity.DbSet<OpendeurdagAppWebApi.Models.Campus> Campus { get; set; }
 
         public System.Data.Entity.DbSet<OpendeurdagAppWebApi.Models.Richting> Richtings { get; set; }
+
+        public System.Data.Entity.DbSet<OpendeurdagAppWebApi.Models.Gebouw> Gebouws { get; set; }
     }
 }
