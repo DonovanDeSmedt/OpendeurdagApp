@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace OpendeurdagApp.Model
 {
@@ -39,6 +40,12 @@ namespace OpendeurdagApp.Model
         {
             get { return omschrijving; }
             set { omschrijving = value; RaisePropertyChanged(); }
+        }
+
+        private Visibility isVisible=Visibility.Collapsed;
+        public Visibility IsVisible {
+            get { return isVisible; } 
+            set { isVisible = value;RaisePropertyChanged(); }
         }
 
 

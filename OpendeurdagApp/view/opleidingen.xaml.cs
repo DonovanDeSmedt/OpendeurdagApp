@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using OpendeurdagApp.Model;
 using OpendeurdagApp.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -33,38 +34,38 @@ namespace OpendeurdagApp.View
             ovm=DataContext as OpleidingenViewModel;
         }
 
-        private void ListViewItem_Tapped(object sender, TappedRoutedEventArgs e)
-        {
+        //private void ListViewItem_Tapped(object sender, TappedRoutedEventArgs e)
+        //{
 
-            var parentContainer = this.listView.ItemContainerGenerator.ContainerFromItem(sender);
-            var textblock = FindControl<TextBlock>(parentContainer, "textblockRichting");
-            textblock.Visibility = Visibility.Collapsed;
-
-
-        }
-
-        private List<Control> AllChildren(DependencyObject parent)
-        {
-            var _List = new List<Control>();
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-            {
-                var _Child = VisualTreeHelper.GetChild(parent, i);
-                if (_Child is Control)
-                {
-                    _List.Add(_Child as Control);
-                }
-                _List.AddRange(AllChildren(_Child));
-            }
-            return _List;
-        }
+        //    var parentContainer = this.listView.ItemContainerGenerator.ContainerFromItem(sender);
+        //    var textblock = FindControl<TextBlock>(parentContainer, "textblockRichting");
+        //    textblock.Visibility = Visibility.Collapsed;
 
 
-        private T FindControl<T>(DependencyObject parentContainer, string controlName)
-        {
-            var childControls = AllChildren(parentContainer);
-            var control = childControls.OfType<Control>().Where(x => x.Name.Equals(controlName)).Cast<T>().First();
-            return control;
-        }
+        //}
+
+        //private List<Control> AllChildren(DependencyObject parent)
+        //{
+        //    var _List = new List<Control>();
+        //    for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+        //    {
+        //        var _Child = VisualTreeHelper.GetChild(parent, i);
+        //        if (_Child is Control)
+        //        {
+        //            _List.Add(_Child as Control);
+        //        }
+        //        _List.AddRange(AllChildren(_Child));
+        //    }
+        //    return _List;
+        //}
+
+
+        //private T FindControl<T>(DependencyObject parentContainer, string controlName)
+        //{
+        //    var childControls = AllChildren(parentContainer);
+        //    var control = childControls.OfType<Control>().Where(x => x.Name.Equals(controlName)).Cast<T>().First();
+        //    return control;
+        //}
 
         
 
@@ -88,11 +89,28 @@ namespace OpendeurdagApp.View
                 if (!ovm.IsLoaded)
                 {
                     await ovm.Loadrichtingen();
+
                 }
             }
             catch (Exception ex)
             {
             }
+        }
+
+        private void ListView_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            Richting richting = (Richting) e.ClickedItem;
+            if (richting.IsVisible == Visibility.Visible)
+            {
+                richting.IsVisible = Visibility.Collapsed;
+            }
+            else
+            {
+                richting.IsVisible = Visibility.Visible;
+            }
+            
+            
+
         }
     }
 }

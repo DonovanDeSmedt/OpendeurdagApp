@@ -5,15 +5,13 @@
     xmlns:local="using:OpendeurdagApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    d:DesignWidth="400">
+    mc:Ignorable="d">
 
     <SplitView x:Name="MySplitView" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
                CompactPaneLength="50" OpenPaneLength="150">
         <SplitView.Pane>
             <StackPanel Background="Gray">
-                <Button x:Name="Hoofdmenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
-                    Width="50" Height="50" Background="Transparent" Click="Hoofdmenu_OnClick"/>
+                <Button x:Name="Hoofdmenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Height="50" Background="Transparent" Click="Hoofdmenu_OnClick" HorizontalAlignment="Right" Width="50" Margin="0,0,100,0"/>
 
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="Opleidingen" Content="&#xE2B1;"
@@ -35,7 +33,7 @@
         <SplitView.Content>
             <ContentControl Content="{Binding CurrentData}" ContentTemplate="{Binding CurrentData.Template}">
 
-          </ContentControl>
+            </ContentControl>
         </SplitView.Content>
     </SplitView>
 
