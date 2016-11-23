@@ -17,5 +17,8 @@
         <DataTemplate x:Key="OpleidingenViewModel">
             <view:Opleidingen/>
         </DataTemplate>
+        <DataTemplate x:Key="NewsFeedViewModel">
+            <view:NewsFeed/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
