@@ -21,19 +21,31 @@ namespace OpendeurdagApp.ViewModel
             set { newsfeedList = value; RaisePropertyChanged(); }
         }
         private MainPageViewModel mainvm;
+        private bool isLoading;
+
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set { isLoading = value; RaisePropertyChanged(); }
+        }
+
         private readonly string url = "http://localhost:51420/api/";
 
         public NewsFeedViewModel(MainPageViewModel mainPagevm)
         {
+            IsLoading = true;
             mainvm = mainPagevm;
-            NewsfeedList = new ObservableCollection<NewsfeedItem>(CampusRepository.GetNewsFeed());
-            //getNewsFeed();
+            getNewsFeed();
         }
         private async void getNewsFeed()
         {
             HttpClient client = new HttpClient();
-            var jsonString = await client.GetStringAsync(url + "newsfeed");
+            var jsonString = await client.GetStringAsync(url + "newsfeeditems");
             NewsfeedList = JsonConvert.DeserializeObject<ObservableCollection<NewsfeedItem>>(jsonString);
+            IsLoading = false;
         }
+
+       
+
     }
 }

@@ -157,6 +157,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\GebouwsController.cs" />
+    <Compile Include="Controllers\NewsFeedItemsController.cs" />
     <Compile Include="Controllers\RichtingsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -166,9 +167,14 @@
     <Compile Include="Migrations\201611201818038_Initial.Designer.cs">
       <DependentUpon>201611201818038_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611231451021_Initial1.cs" />
+    <Compile Include="Migrations\201611231451021_Initial1.Designer.cs">
+      <DependentUpon>201611231451021_Initial1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\Gebouw.cs" />
+    <Compile Include="Models\NewsFeedItem.cs" />
     <Compile Include="Models\OpendeurdagAppWebContext.cs" />
     <Compile Include="Models\Richting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,6 +191,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611201818038_Initial.resx">
       <DependentUpon>201611201818038_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611231451021_Initial1.resx">
+      <DependentUpon>201611231451021_Initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

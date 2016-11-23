@@ -36,8 +36,7 @@ namespace OpendeurdagApp.View
         {
             
         }
-
-
+       
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

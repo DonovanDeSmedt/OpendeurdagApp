@@ -92,6 +92,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button Command="{Binding CampusDetailCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListViewCampussen}" Content="Details campus"/>
+            <ProgressRing IsActive="{Binding IsLoading}" Height="100" Width="100"/>
         </StackPanel>
 
 
@@ -113,15 +114,17 @@
                 </Hub.Header>
                 <HubSection Width="400"  Header="Selecteer campus" Background="#B2FFFFFF" >
                     <DataTemplate>
-                        <ListView Name="ListViewCampussenDesktop"  ItemsSource="{Binding Campussen}" ItemClick="OnChangeCampus" IsItemClickEnabled="True">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding Naam}" Style="{StaticResource CenterDesktop}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        <StackPanel Orientation="Vertical">
+                            <ListView Name="ListViewCampussenDesktop"  ItemsSource="{Binding Campussen}" ItemClick="OnChangeCampus" IsItemClickEnabled="True">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Naam}" Style="{StaticResource CenterDesktop}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
                     </DataTemplate>
                 </HubSection>
                 <HubSection IsHeaderInteractive="True" MinWidth="350" Background="#D8FFFFFF" Header="Richtingen op de campus" HorizontalAlignment="Center">

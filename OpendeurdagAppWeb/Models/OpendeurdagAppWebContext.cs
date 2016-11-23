@@ -24,5 +24,7 @@ namespace OpendeurdagAppWeb.Models
         public System.Data.Entity.DbSet<OpendeurdagAppWeb.Models.Gebouw> Gebouws { get; set; }
 
         public System.Data.Entity.DbSet<OpendeurdagAppWeb.Models.Richting> Richtings { get; set; }
+
+        public System.Data.Entity.DbSet<OpendeurdagAppWeb.Models.NewsFeedItem> NewsFeedItems { get; set; }
     }
 }

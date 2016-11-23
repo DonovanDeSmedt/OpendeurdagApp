@@ -24,6 +24,13 @@ namespace OpendeurdagApp.ViewModel
             get { return campussen; }
             set { campussen = value; RaisePropertyChanged(); }
         }
+        private bool isLoading;
+
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set { isLoading = value; RaisePropertyChanged(); }
+        }
 
         private Campus campus;
         public Campus Campus
@@ -40,6 +47,7 @@ namespace OpendeurdagApp.ViewModel
             Campussen = new ObservableCollection<Campus>(CampusRepository.GetCampussen());
             Campus = Campussen[0];
             CampusDetailCommand = new RelayCommand(campus => ShowDetailsCampus(campus));
+            IsLoading = true;
             GetCampussen();
         }
 
@@ -56,6 +64,7 @@ namespace OpendeurdagApp.ViewModel
             var jsonString = await client.GetStringAsync(url+"campus");
             Campussen = JsonConvert.DeserializeObject<ObservableCollection<Campus>>(jsonString);
             IsDataLoaded = true;
+            IsLoading = false;
         }
 
         public async Task LoadCampussen()

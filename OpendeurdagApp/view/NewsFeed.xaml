@@ -9,19 +9,21 @@
 
     <Pivot Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <PivotItem Header="Newsfeed">
-            <ListView Name="ListViewNewsFeed" ItemsSource="{Binding NewsfeedList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding Tag}"></TextBlock>
-                            <TextBlock Text="{Binding Titel}"></TextBlock>
-                            <TextBlock Text="{Binding Inhoud}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <StackPanel Orientation="Vertical">
+                <ListView Name="ListViewNewsFeed" ItemsSource="{Binding NewsfeedList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Tag}"></TextBlock>
+                                <TextBlock Text="{Binding Titel}"></TextBlock>
+                                <TextBlock TextWrapping="Wrap"><Run Text="{Binding Inhoud}"/></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ProgressRing IsActive="{Binding IsLoading}" Height="100" Width="100"/>
+            </StackPanel>
         </PivotItem>
-
         <PivotItem Header="Inschrijven">
             <StackPanel>
                 <TextBlock Text="Schrijf je hier in"></TextBlock>
