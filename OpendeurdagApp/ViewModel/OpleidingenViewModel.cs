@@ -15,7 +15,7 @@ namespace OpendeurdagApp.ViewModel
     class OpleidingenViewModel:ViewModelBase
     {
 
-        private readonly string url = "http://localhost:19962/api/";
+        private readonly string url = "http://localhost:51420/api/";
 
         public bool IsLoaded { get; set; }
 
