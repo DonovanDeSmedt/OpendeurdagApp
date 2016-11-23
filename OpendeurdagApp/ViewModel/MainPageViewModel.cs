@@ -16,6 +16,7 @@ namespace OpendeurdagApp.ViewModel
             OpleidingenCommand = new RelayCommand(opleiding => ShowOpleidingen(opleiding));
             CampussenCommand = new RelayCommand(_ => ShowCampussen());
             CampusDetailCommand = new RelayCommand(campus => ShowDetailCampus(campus));
+            NewsFeedCommand = new RelayCommand(_ => ShowNewsFeed());
         }
         private ViewModelBase currentData;
 
@@ -28,6 +29,7 @@ namespace OpendeurdagApp.ViewModel
         public RelayCommand OpleidingenCommand { get; set; }
         public RelayCommand CampussenCommand { get; set; }
         public RelayCommand CampusDetailCommand { get; set; }
+        public RelayCommand NewsFeedCommand { get; set; }
 
         private void ShowOpleidingen(Object o)
         {
@@ -48,6 +50,12 @@ namespace OpendeurdagApp.ViewModel
             Campus campus = (Campus) o;
             CurrentData = new CampusDetailViewModel(this, campus);
             Debug.WriteLine("Command campusDetail werd uitgevoerd!");
+        }
+
+        private void ShowNewsFeed()
+        {
+            CurrentData = new NewsFeedViewModel(this);
+            Debug.WriteLine("NewsFeed command werd uitgevoerd");
         }
     }
 

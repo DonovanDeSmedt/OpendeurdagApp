@@ -102,6 +102,7 @@
     <Compile Include="Model\Car.cs" />
     <Compile Include="Model\DAL\CampusRepository.cs" />
     <Compile Include="Model\Gebouw.cs" />
+    <Compile Include="Model\NewsfeedItem.cs" />
     <Compile Include="Model\Opleiding.cs" />
     <Compile Include="Model\Richting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="ViewModel\CampusDetailViewModel.cs" />
     <Compile Include="ViewModel\CampussenViewModel.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\NewsFeedViewModel.cs" />
     <Compile Include="ViewModel\OpleidingenViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\CampusDetail.xaml.cs">
@@ -122,6 +124,9 @@
     </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewsFeed.xaml.cs">
+      <DependentUpon>NewsFeed.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Opleidingen.xaml.cs">
       <DependentUpon>Opleidingen.xaml</DependentUpon>
@@ -175,6 +180,10 @@
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\NewsFeed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Opleidingen.xaml">
       <Generator>MSBuild:Compile</Generator>
