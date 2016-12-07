@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using OpendeurdagApp.Model;
 using OpendeurdagApp.Utils;
 
@@ -13,6 +14,7 @@ namespace OpendeurdagApp.ViewModel
     {
         public MainPageViewModel()
         {
+            IsAdmin = Visibility.Collapsed;
             OpleidingenCommand = new RelayCommand(opleiding => ShowOpleidingen(opleiding));
             CampussenCommand = new RelayCommand(_ => ShowCampussen());
             CampusDetailCommand = new RelayCommand(campus => ShowDetailCampus(campus));
@@ -25,6 +27,14 @@ namespace OpendeurdagApp.ViewModel
         {
             get { return currentData; }
             set { currentData = value; RaisePropertyChanged(); }
+        }
+
+        private Visibility isAdmin;
+
+        public Visibility IsAdmin
+        {
+            get { return isAdmin; }
+            set { isAdmin = value; RaisePropertyChanged(); }
         }
 
         public RelayCommand OpleidingenCommand { get; set; }

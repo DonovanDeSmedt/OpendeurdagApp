@@ -25,8 +25,43 @@
             </StackPanel>
         </PivotItem>
         <PivotItem Header="Inschrijven">
-            <StackPanel>
-                <TextBlock Text="Schrijf je hier in"></TextBlock>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Achternaam:" Width="100"/>
+                    <TextBox x:Name="achternaamBox"  PlaceholderText="Voer je achternaam in" Width="250" Margin="20,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Text="Voornaam:" Width="100"/>
+                    <TextBox x:Name="voornaamBox"  PlaceholderText="Voer je voornaam in" Width="250" Margin="20,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Text="Email:" Width="100"/>
+                    <TextBox x:Name="emailBox" PlaceholderText="Voer je email in" Width="250" Margin="20,0,0,0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Text="Interesse:" Width="100"/>
+                    <ComboBox x:Name="comboBoxRichtingen" ItemsSource="{Binding Richtingen}" Width="250" Margin="20,0,0,0"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Verstuur" Width="200" Margin="120,15,0,0" Tapped="BtnVerstuurOnTapped" ></Button>
+                </StackPanel>
+            </StackPanel>
+
+        </PivotItem>
+        <PivotItem Header="Login">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Visibility="{Binding IsAdmin}">
+                    <TextBlock Text="Email:" Width="100"/>
+                    <TextBox x:Name="loginEmail"  PlaceholderText="Voer je email in" Width="250" Margin="20,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Visibility="{Binding IsAdmin}">
+                    <TextBlock Text="Wachtwoord:" Width="100"/>
+                    <PasswordBox x:Name="loginWw" PlaceholderText="Voer je wachtwoord in" Width="250" Margin="20,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnLogin" Content="Login" Width="200" Margin="120,15,0,0" Tapped="Login" Visibility="{Binding IsAdmin}"/>
+                </StackPanel>
             </StackPanel>
         </PivotItem>
     </Pivot>

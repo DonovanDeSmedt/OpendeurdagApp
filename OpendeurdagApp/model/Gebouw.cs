@@ -21,6 +21,10 @@ namespace OpendeurdagApp.Model
                 RaisePropertyChanged();
             }
         }
+
+        private int campusId;
+
+        public int Campus_Id { get {return campusId;} set { campusId = value; RaisePropertyChanged(); } }
         private string gebouwNaam;
 
         public string Naam

@@ -106,18 +106,20 @@ namespace OpendeurdagApp.ViewModel
             {
                 Naam = naam,
                 Adres = locatie,
-                Foto = "ms-appx:///Assets/building.png"
+                Foto = "ms-appx:///Assets/building.png",
+                Richtingen = new List<Richting>(),
+                Gebouwen = new List<Gebouw>()
             };
             Campussen.Add(newCampus);
             RaisePropertyChanged();
-            postNewCampus(campus);
+            postNewElement(newCampus, "campus");
         }
 
-        private async Task postNewCampus(Campus campus)
+        private async Task postNewElement<E>(E element, String api)
         {
             HttpClient client = new HttpClient();
-            String jsonCampus = JsonConvert.SerializeObject(campus);
-            HttpResponseMessage response = await client.PostAsync(new Uri(url + "campus"), new StringContent(jsonCampus));
+            String jsonCampus = JsonConvert.SerializeObject(element);
+            HttpResponseMessage response = await client.PostAsync(new Uri(url + api), new StringContent(jsonCampus, Encoding.UTF8, "application/json"));
             if (!response.IsSuccessStatusCode)
             {
                 PostError = response.ReasonPhrase;
@@ -130,11 +132,14 @@ namespace OpendeurdagApp.ViewModel
                 Richting newRichting = new Richting
                 {
                     Naam = naam,
-                    Omschrijving = omschrijving
+                    Omschrijving = omschrijving,
+                    Campus_Id = SelectedCampus.CampusId
                 };
+               
                 Campussen.First(c => c.Naam == SelectedCampus.Naam).Richtingen.Add(newRichting);
                 SelectedCampus.Richtingen.Add(newRichting);
                 RaisePropertyChanged();
+                postNewElement(newRichting, "richtings");
             }
 
         }
@@ -145,11 +150,13 @@ namespace OpendeurdagApp.ViewModel
             {
                 Gebouw newGebouw = new Gebouw
                 {
-                    Naam = naam
+                    Naam = naam,
+                    Campus_Id = SelectedCampus.CampusId
                 };
                 Campussen.First(c => c.Naam == SelectedCampus.Naam).Gebouwen.Add(newGebouw);
                 SelectedCampus.Gebouwen.Add(newGebouw);
                 RaisePropertyChanged();
+                postNewElement(newGebouw, "gebouws");
             }
             
         }

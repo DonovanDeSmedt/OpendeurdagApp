@@ -22,6 +22,22 @@ namespace OpendeurdagApp.Model
                 RaisePropertyChanged();
             }
         }
+
+        private int campusId;
+
+        public int Campus_Id
+        {
+            get
+            {
+                return campusId;
+            }
+            set
+            {
+                campusId = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private string naam;
 
         public string Naam
@@ -52,6 +68,7 @@ namespace OpendeurdagApp.Model
         {
             return Naam;
         }
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 

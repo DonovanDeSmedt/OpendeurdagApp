@@ -101,6 +101,8 @@
     <Compile Include="Model\Campus.cs" />
     <Compile Include="Model\Car.cs" />
     <Compile Include="Model\DAL\CampusRepository.cs" />
+    <Compile Include="Model\DAL\FormulierInschrijvingRepo.cs" />
+    <Compile Include="Model\DAL\UserRepository.cs" />
     <Compile Include="Model\Gebouw.cs" />
     <Compile Include="Model\NewsfeedItem.cs" />
     <Compile Include="Model\Opleiding.cs" />
