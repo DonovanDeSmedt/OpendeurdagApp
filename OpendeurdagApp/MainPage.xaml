@@ -11,7 +11,41 @@
         <viewModel:MainPageViewModel/>
     </Page.DataContext>
 
-    <ContentControl Content="{Binding}" ContentTemplate="{Binding Template}" >
+    <!--<ContentControl Content="{Binding}" ContentTemplate="{Binding Template}" >
 
-    </ContentControl>
+    </ContentControl>-->
+    <SplitView x:Name="MySplitView" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
+        <SplitView.Pane>
+            <StackPanel Background="Gray">
+                <Button x:Name="Hoofdmenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Height="50" Background="Transparent"  HorizontalAlignment="Right" Width="50" Margin="0,0,100,0"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Opleidingen" Content="&#xE2B1;"
+                    Width="50" Height="50" Background="Transparent" Command="{Binding OpleidingenCommand}"/>
+                    <TextBlock Text="Opleidingen" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Newsfeed" Content="&#xE2B1;"
+                    Width="50" Height="50" Background="Transparent" Command="{Binding NewsFeedCommand}"/>
+                    <TextBlock Text="Opendeur" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Campussen" FontFamily="Segoe MDL2 Assets" Content="&#xE2AD;"
+                        Width="50" Height="50" Background="Transparent" Command="{Binding CampussenCommand}"/>
+                    <TextBlock Text="Campussen" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Admin" Content="&#xE2B1;"
+                    Width="50" Height="50" Background="Transparent" Command="{Binding AdminCommand}"/>
+                    <TextBlock Text="Admin" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <ContentControl Content="{Binding CurrentData}" ContentTemplate="{Binding CurrentData.Template}">
+
+            </ContentControl>
+        </SplitView.Content>
+    </SplitView>
 </Page>

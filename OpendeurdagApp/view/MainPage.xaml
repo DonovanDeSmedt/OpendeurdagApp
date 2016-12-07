@@ -28,6 +28,11 @@
                         Width="50" Height="50" Background="Transparent" Command="{Binding CampussenCommand}"/>
                     <TextBlock Text="Campussen" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Admin" Content="&#xE2B1;"
+                    Width="50" Height="50" Background="Transparent" Command="{Binding AdminCommand}"/>
+                    <TextBlock Text="Admin" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
             </StackPanel>
         </SplitView.Pane>
         <SplitView.Content>

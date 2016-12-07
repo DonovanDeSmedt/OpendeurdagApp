@@ -20,5 +20,8 @@
         <DataTemplate x:Key="NewsFeedViewModel">
             <view:NewsFeed/>
         </DataTemplate>
+        <DataTemplate x:Key="AdminViewModel">
+            <view:Admin/>
+        </DataTemplate>
     </Application.Resources>
 </Application>

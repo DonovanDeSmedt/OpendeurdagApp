@@ -84,6 +84,11 @@ namespace OpendeurdagApp.Model
             }
         }
 
+        public override string ToString()
+        {
+            return Naam;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void RaisePropertyChanged([CallerMemberName]string propertyName = "")
         {

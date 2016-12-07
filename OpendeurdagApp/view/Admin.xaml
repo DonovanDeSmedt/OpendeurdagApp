@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="OpendeurdagApp.View.Admin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OpendeurdagApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel Orientation="Vertical">
+
+
+        <StackPanel Orientation="Vertical" Margin="0 10 0 0">
+            <StackPanel Orientation="Vertical" Margin="0 0 0 40">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0 0 0 10">
+                    <TextBlock Text="Campussen" Width="100"></TextBlock>
+                    <ComboBox ItemsSource="{Binding Campussen}" HorizontalContentAlignment="Stretch" SelectionChanged="OnCampusSelected"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <SymbolIcon Symbol="Add" Margin="0 0 20 0" Tapped="OnCampusAdded"/>
+                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0" />
+                    <TextBox Text="{Binding SelectedCampus}" x:Name="txfCampusNaam" PlaceholderText="selecteer een campus"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Margin="100 0 0 0" Text="{Binding SelectedCampus.Adres}" x:Name="txfCampusLocatie" PlaceholderText="Voeg locatie campus toe"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0 0 0 40">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0 0 0 10">
+                    <TextBlock Text="Richtingen" Width="100"></TextBlock>
+                    <ComboBox ItemsSource="{Binding SelectedCampus.Richtingen}" HorizontalContentAlignment="Stretch" SelectionChanged="OnRichtingSelected"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <SymbolIcon Symbol="Add" Margin="0 0 20 0" Tapped="OnRichtingAdded"/>
+                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0" />
+                    <TextBox  Text="{Binding SelectedRichting}"  x:Name="txfRichtingNaam" PlaceholderText="selecteer een richting"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Padding="0 30" Margin="100 0 0 0" Text="{Binding SelectedRichting.Omschrijving}" x:Name="txfRichtingOmschrijving" PlaceholderText="Voeg beschrijving richting toe"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0 0 0 40">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0 0 0 10">
+                    <TextBlock Text="Gebouwen" Width="100"></TextBlock>
+                    <ComboBox ItemsSource="{Binding SelectedCampus.Gebouwen}" HorizontalContentAlignment="Stretch" SelectionChanged="OnGebouwSelected"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <SymbolIcon Symbol="Add" Margin="0 0 20 0" Tapped="OnGebouwAdded"/>
+                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0"/>
+                    <TextBox  Text="{Binding SelectedGebouw}"  x:Name="txfGebouwNaam" PlaceholderText="selecteer een gebouw"/>
+                </StackPanel>
+            </StackPanel>
+            <Button Content="Opslaan"></Button>
+        </StackPanel>
+    </StackPanel>
+</Page>

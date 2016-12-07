@@ -48,6 +48,10 @@ namespace OpendeurdagApp.Model
             set { isVisible = value;RaisePropertyChanged(); }
         }
 
+        public override string ToString()
+        {
+            return Naam;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

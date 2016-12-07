@@ -19,18 +19,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
-                        <!--<ListViewItem MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="{Binding Naam}"/>-->
+                            <!--<ListViewItem MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="{Binding Naam}"/>-->
                             <TextBlock Text="{Binding Naam}" FontSize="18.667"></TextBlock>
-                        <TextBlock x:Name="textblockRichting" Visibility="{Binding IsVisible}" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content"
+                            <TextBlock x:Name="textblockRichting" Visibility="{Binding IsVisible}" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content"
                     ><Run Text="{Binding Omschrijving}"></Run></TextBlock>
-                    
+
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-          
-                <!--<ListViewItem Tapped="ListViewItemBedrijfsmanagement_OnTapped" MinHeight="0" MinWidth="0" HorizontalContentAlignment="Center" FontSize="18.667" Content="Bedrijfsmanagement"/>
-                <TextBlock x:Name="textBlockBedrijfsmanagsement" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource StyleTextblockOpleidingen}" ScrollViewer.HorizontalScrollBarVisibility="Visible" FontSize="16" AutomationProperties.AccessibilityView="Content">
-                    <Run Text="Als je echt niet weet wat te doen en make-up over hebt dan is dit DE opleiding!"/></TextBlock>-->            
             </ListView>
         </StackPanel>
     </Grid>
