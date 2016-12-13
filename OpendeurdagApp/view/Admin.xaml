@@ -17,7 +17,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                     <SymbolIcon Symbol="Add" Margin="0 0 20 0" Tapped="OnCampusAdded"/>
-                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0" />
+                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0" Tapped="OnCampusDeleted"/>
                     <TextBox Text="{Binding SelectedCampus}" x:Name="txfCampusNaam" PlaceholderText="selecteer een campus"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
@@ -31,7 +31,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
                     <SymbolIcon Symbol="Add" Margin="0 0 20 0" Tapped="OnRichtingAdded"/>
-                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0" />
+                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0" Tapped="OnRichtingDeleted"/>
                     <TextBox  Text="{Binding SelectedRichting}"  x:Name="txfRichtingNaam" PlaceholderText="selecteer een richting"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
@@ -45,11 +45,11 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
                     <SymbolIcon Symbol="Add" Margin="0 0 20 0" Tapped="OnGebouwAdded"/>
-                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0"/>
+                    <SymbolIcon Symbol="Remove" Margin="0 0 40 0" Tapped="OnGebouwdDeleted"/>
                     <TextBox  Text="{Binding SelectedGebouw}"  x:Name="txfGebouwNaam" PlaceholderText="selecteer een gebouw"/>
                 </StackPanel>
             </StackPanel>
-            <Button Content="Opslaan"></Button>
+            <Button Content="Opslaan" Tapped="WijzigingOpslaan"></Button>
         </StackPanel>
     </StackPanel>
 </Page>

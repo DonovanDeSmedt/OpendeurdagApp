@@ -17,7 +17,7 @@ namespace OpendeurdagApp.ViewModel
         private readonly string url = "http://localhost:51420/api/";
         public RelayCommand AdminCommand { get; set; }
         private ObservableCollection<Campus> campussen;
-        public string PostError { get; set; }
+        public string RequestError { get; set; }
         public bool IsLoadingCampus { get; set; }
         public bool IsLoadingRichting { get; set; }
         private Campus campus;
@@ -112,17 +112,39 @@ namespace OpendeurdagApp.ViewModel
             };
             Campussen.Add(newCampus);
             RaisePropertyChanged();
-            postNewElement(newCampus, "campus");
+            PostNewElement(newCampus, "campus");
         }
 
-        private async Task postNewElement<E>(E element, String api)
+       
+        private async Task PostNewElement<E>(E element, string api)
         {
             HttpClient client = new HttpClient();
             String jsonCampus = JsonConvert.SerializeObject(element);
             HttpResponseMessage response = await client.PostAsync(new Uri(url + api), new StringContent(jsonCampus, Encoding.UTF8, "application/json"));
             if (!response.IsSuccessStatusCode)
             {
-                PostError = response.ReasonPhrase;
+                RequestError = response.ReasonPhrase;
+            }
+        }
+
+        private async Task UpdateElement<E>(E element, string api, string id)
+        {
+            HttpClient client = new HttpClient();
+            String jsonCampus = JsonConvert.SerializeObject(element);
+            HttpResponseMessage response = await client.PutAsync(new Uri(url + api + "/" + id), new StringContent(jsonCampus, Encoding.UTF8, "application/json"));
+            if (!response.IsSuccessStatusCode)
+            {
+                RequestError = response.ReasonPhrase;
+            }
+        }
+
+        private async Task DeleteElement(string api, string id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.DeleteAsync(new Uri(url + api +"/"+ id));
+            if (!response.IsSuccessStatusCode)
+            {
+                RequestError = response.ReasonPhrase;
             }
         }
         public void AddNewRichting(string naam, string omschrijving)
@@ -139,7 +161,7 @@ namespace OpendeurdagApp.ViewModel
                 Campussen.First(c => c.Naam == SelectedCampus.Naam).Richtingen.Add(newRichting);
                 SelectedCampus.Richtingen.Add(newRichting);
                 RaisePropertyChanged();
-                postNewElement(newRichting, "richtings");
+                PostNewElement(newRichting, "richtings");
             }
 
         }
@@ -156,9 +178,18 @@ namespace OpendeurdagApp.ViewModel
                 Campussen.First(c => c.Naam == SelectedCampus.Naam).Gebouwen.Add(newGebouw);
                 SelectedCampus.Gebouwen.Add(newGebouw);
                 RaisePropertyChanged();
-                postNewElement(newGebouw, "gebouws");
+                PostNewElement(newGebouw, "gebouws");
             }
             
+        }
+        public void UpdateObject<E>(E element, string api, string id)
+        {
+            UpdateElement(element, api, id);
+        }
+
+        public void DeleteObject(string api, string id)
+        {
+            DeleteElement(api, id);
         }
 
         private async Task GetCampussen()

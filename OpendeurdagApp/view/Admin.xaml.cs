@@ -27,6 +27,9 @@ namespace OpendeurdagApp.View
     public sealed partial class Admin : Page
     {
         private AdminViewModel vm;
+        private Richting selectedRichting;
+        private Campus selectedCampus;
+        private Gebouw selectedGebouw;
         public Admin()
         {
             this.InitializeComponent();
@@ -34,22 +37,22 @@ namespace OpendeurdagApp.View
 
         private void OnCampusSelected(object sender, SelectionChangedEventArgs e)
         {
-            Campus campus = (Campus) e.AddedItems[0];
+            selectedCampus = (Campus) e.AddedItems[0];
             vm = DataContext as AdminViewModel;
-            vm.SelectedCampus = campus;
+            vm.SelectedCampus = selectedCampus;
             vm.Richtingen = new ObservableCollection<Richting>(vm.SelectedCampus.Richtingen);
         }
         private void OnRichtingSelected(object sender, SelectionChangedEventArgs e)
         {
-            Richting richting = (Richting)e.AddedItems[0];
+            selectedRichting = (Richting)e.AddedItems[0];
             vm = DataContext as AdminViewModel;
-            vm.SelectedRichting = richting;
+            vm.SelectedRichting = selectedRichting;
         }
         private void OnGebouwSelected(object sender, SelectionChangedEventArgs e)
         {
-            Gebouw gebouw = (Gebouw)e.AddedItems[0];
+            selectedGebouw = (Gebouw)e.AddedItems[0];
             vm = DataContext as AdminViewModel;
-            vm.SelectedGebouw = gebouw;
+            vm.SelectedGebouw = selectedGebouw;
         }
 
         private void OnCampusAdded(object sender, TappedRoutedEventArgs e)
@@ -63,6 +66,74 @@ namespace OpendeurdagApp.View
         private void OnGebouwAdded(object sender, TappedRoutedEventArgs e)
         {
             vm.AddNewGebouw(txfGebouwNaam.Text);
+        }
+        private void OnCampusDeleted(object sender, TappedRoutedEventArgs e)
+        {
+            vm.DeleteObject("campus", selectedCampus.CampusId.ToString());
+        }
+        private void OnRichtingDeleted(object sender, TappedRoutedEventArgs e)
+        {
+            vm.DeleteObject("richtings", selectedRichting.RichtingId.ToString());
+        }
+        private void OnGebouwdDeleted(object sender, TappedRoutedEventArgs e)
+        {
+            vm.DeleteObject("gebouws", selectedGebouw.GebouwId.ToString());
+        }
+
+
+        private void WijzigingOpslaan(object sender, TappedRoutedEventArgs e)
+        {
+            bool isCampusChanged = false;
+            bool isRichtingChanged = false;
+            bool isGebouwChanged = false;
+
+            string campusText = txfCampusNaam.Text;
+            string campusLocatie = txfCampusLocatie.Text;
+            string richtingText = txfRichtingNaam.Text;
+            string richtingOmschrijving = txfRichtingOmschrijving.Text;
+
+            string gebouwText = txfGebouwNaam.Text;
+
+            //Eventuele wijzigingen aan object doorvoeren
+            if (campusText != selectedCampus.Naam)
+            {
+                selectedCampus.Naam = campusText;
+                isCampusChanged = true;
+            }
+            if (campusLocatie != selectedCampus.Adres)
+            {
+                selectedCampus.Adres = campusLocatie;
+                isCampusChanged = true;
+            }
+            if (richtingText != selectedRichting.Naam)
+            {
+                selectedRichting.Naam = richtingText;
+                isRichtingChanged = true;
+            }
+            if (richtingOmschrijving != selectedRichting.Omschrijving)
+            {
+                selectedRichting.Omschrijving = richtingOmschrijving;
+                isRichtingChanged = true;
+            }
+            if (gebouwText != selectedGebouw.Naam)
+            {
+                selectedGebouw.Naam = gebouwText;
+                isGebouwChanged = true;
+            }
+
+            //Updates doorvoeren
+            if (isCampusChanged)
+            {
+                vm.UpdateObject(selectedCampus, "campus", selectedCampus.CampusId.ToString());
+            }
+            if (isRichtingChanged)
+            {
+                vm.UpdateObject(selectedRichting, "richtings", selectedRichting.RichtingId.ToString());
+            }
+            if (isGebouwChanged)
+            {
+                vm.UpdateObject(selectedGebouw, "gebouws", selectedGebouw.GebouwId.ToString());
+            }
         }
     }
 }
