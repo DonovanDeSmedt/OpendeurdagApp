@@ -95,31 +95,41 @@ namespace OpendeurdagApp.View
             string gebouwText = txfGebouwNaam.Text;
 
             //Eventuele wijzigingen aan object doorvoeren
-            if (campusText != selectedCampus.Naam)
+            if (selectedCampus != null)
             {
-                selectedCampus.Naam = campusText;
-                isCampusChanged = true;
+                if (campusText != selectedCampus.Naam)
+                {
+                    selectedCampus.Naam = campusText;
+                    isCampusChanged = true;
+                }
+                if (campusLocatie != selectedCampus.Adres)
+                {
+                    selectedCampus.Adres = campusLocatie;
+                    isCampusChanged = true;
+                }
             }
-            if (campusLocatie != selectedCampus.Adres)
+            if (selectedRichting != null)
             {
-                selectedCampus.Adres = campusLocatie;
-                isCampusChanged = true;
+                if (richtingText != selectedRichting.Naam)
+                {
+                    selectedRichting.Naam = richtingText;
+                    isRichtingChanged = true;
+                }
+                if (richtingOmschrijving != selectedRichting.Omschrijving)
+                {
+                    selectedRichting.Omschrijving = richtingOmschrijving;
+                    isRichtingChanged = true;
+                }
             }
-            if (richtingText != selectedRichting.Naam)
+            if (selectedGebouw != null)
             {
-                selectedRichting.Naam = richtingText;
-                isRichtingChanged = true;
+                if (gebouwText != selectedGebouw.Naam)
+                {
+                    selectedGebouw.Naam = gebouwText;
+                    isGebouwChanged = true;
+                }
             }
-            if (richtingOmschrijving != selectedRichting.Omschrijving)
-            {
-                selectedRichting.Omschrijving = richtingOmschrijving;
-                isRichtingChanged = true;
-            }
-            if (gebouwText != selectedGebouw.Naam)
-            {
-                selectedGebouw.Naam = gebouwText;
-                isGebouwChanged = true;
-            }
+            
 
             //Updates doorvoeren
             if (isCampusChanged)
