@@ -5,10 +5,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
@@ -35,14 +37,18 @@ namespace OpendeurdagApp.View
             this.InitializeComponent();
             Richtingen = new ObservableCollection<Richting>(CampusRepository.GetCampussen()[0].Richtingen);
             gebouwen = new ObservableCollection<Gebouw>();
+
         }
         private void OnChangeCampus(object sender, ItemClickEventArgs e)
         {
             //Go to view opleidingen en de listview van de opleiding openklikken
             Campus campus = (Campus) e.ClickedItem;
-            CampussenViewModel vm = DataContext as CampussenViewModel;
-            vm.Campus = campus;
+            cvm = DataContext as CampussenViewModel;
+            cvm.Campus = campus;
+            
+
         }
+ 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             try

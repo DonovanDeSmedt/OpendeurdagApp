@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OpendeurdagApp.View;
+using OpendeurdagApp.ViewModel;
 using campussen = OpendeurdagApp.View.Campussen;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -24,9 +25,17 @@ namespace OpendeurdagApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private MainPageViewModel vm;
         public MainPage()
         {
             this.InitializeComponent();
+            vm = DataContext as MainPageViewModel;
+            vm.HomeCommand.Execute(this);
+
+        }
+        private void Hoofdmenu_OnClick(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
     }
 }

@@ -5,8 +5,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,6 +35,7 @@ namespace OpendeurdagApp.View
         public Admin()
         {
             this.InitializeComponent();
+            
         }
 
         private void OnCampusSelected(object sender, SelectionChangedEventArgs e)
@@ -57,27 +60,66 @@ namespace OpendeurdagApp.View
 
         private void OnCampusAdded(object sender, TappedRoutedEventArgs e)
         {
-           vm.AddNewCampus(txfCampusNaam.Text, txfCampusLocatie.Text);
+            vm = DataContext as AdminViewModel;
+            vm.AddNewCampus(txfCampusNaam.Text, txfCampusLocatie.Text);
         }
         private void OnRichtingAdded(object sender, TappedRoutedEventArgs e)
         {
+            vm = DataContext as AdminViewModel;
             vm.AddNewRichting(txfRichtingNaam.Text, txfRichtingOmschrijving.Text);
         }
         private void OnGebouwAdded(object sender, TappedRoutedEventArgs e)
         {
+            vm = DataContext as AdminViewModel;
             vm.AddNewGebouw(txfGebouwNaam.Text);
         }
-        private void OnCampusDeleted(object sender, TappedRoutedEventArgs e)
+        private async void OnCampusDeleted(object sender, TappedRoutedEventArgs e)
         {
-            vm.DeleteObject("campus", selectedCampus.CampusId.ToString());
+            vm = DataContext as AdminViewModel;
+            var result = await showMessageDialog("Campus verwijderen",
+               "Bent u zeker dat u de campus " + selectedCampus.Naam + " wilt verwijderen?");
+
+            if (result)
+            {
+                vm.DeleteObject("campus", selectedCampus.CampusId.ToString());
+            }
         }
-        private void OnRichtingDeleted(object sender, TappedRoutedEventArgs e)
+        private async void OnRichtingDeleted(object sender, TappedRoutedEventArgs e)
         {
-            vm.DeleteObject("richtings", selectedRichting.RichtingId.ToString());
+            vm = DataContext as AdminViewModel;
+            bool result = await showMessageDialog("Richting verwijderen",
+                "Bent u zeker dat u de richting " + selectedRichting.Naam + " wilt verwijderen?");
+            if (result)
+            {
+                vm.DeleteObject("richtings", selectedRichting.RichtingId.ToString());
+            }
+            
         }
-        private void OnGebouwdDeleted(object sender, TappedRoutedEventArgs e)
+        
+        private async void OnGebouwdDeleted(object sender, TappedRoutedEventArgs e)
         {
-            vm.DeleteObject("gebouws", selectedGebouw.GebouwId.ToString());
+            vm = DataContext as AdminViewModel;
+            bool result = await showMessageDialog("Gebouw verwijderen",
+               "Bent u zeker dat u de gebouw " + selectedGebouw.Naam + " wilt verwijderen?");
+            if (result)
+            {
+                vm.DeleteObject("gebouws", selectedGebouw.GebouwId.ToString());
+            }
+        }
+        private async Task<bool> showMessageDialog(string title, string content)
+        {
+
+            var dialog = new MessageDialog(content, title);
+
+            dialog.Commands.Add(new UICommand("Ja") { Id = 0 });
+            dialog.Commands.Add(new UICommand("Neen") { Id = 1 });
+
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+
+            var result = await dialog.ShowAsync();
+            //result.Completed += (info, status) => { Debug.WriteLine(info + " " + status); };
+            return result.Id.ToString() == "0"; //GetResults().Id.ToString() == "0";
         }
 
 

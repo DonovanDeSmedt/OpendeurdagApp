@@ -58,9 +58,21 @@ namespace OpendeurdagApp.View
         private async void Login(object sender, TappedRoutedEventArgs e)
         {
             bool result = await UserRepository.login(loginEmail.Text, loginWw.Password);
+            if (result)
+            {
+                loginEmail.Text = "";
+                loginWw.Password = "";
+            }
             btnLogin.Content = result ? "afmelden": "login";
             vm = DataContext as NewsFeedViewModel;
             vm.setIsAdmin(result);
+        }
+
+        private void Loguit(object sender, TappedRoutedEventArgs e)
+        {
+            UserRepository.loguit();
+            vm = DataContext as NewsFeedViewModel;
+            vm.loguit();
         }
     }
 }

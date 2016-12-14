@@ -18,7 +18,7 @@
                CompactPaneLength="50" OpenPaneLength="150">
         <SplitView.Pane>
             <StackPanel Background="Gray">
-                <Button x:Name="Hoofdmenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Height="50" Background="Transparent"  HorizontalAlignment="Right" Width="50" Margin="0,0,100,0"/>
+                <Button x:Name="Hoofdmenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Height="50" Background="Transparent" Click="Hoofdmenu_OnClick"  HorizontalAlignment="Right" Width="50" Margin="0,0,100,0"/>
 
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="Opleidingen" Content="&#xE2B1;"
@@ -44,7 +44,6 @@
         </SplitView.Pane>
         <SplitView.Content>
             <ContentControl Content="{Binding CurrentData}" ContentTemplate="{Binding CurrentData.Template}">
-
             </ContentControl>
         </SplitView.Content>
     </SplitView>

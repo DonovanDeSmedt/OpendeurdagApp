@@ -30,14 +30,30 @@ namespace OpendeurdagApp.ViewModel
         }
 
         private Visibility isAdmin;
+        
 
         public Visibility IsAdmin
         {
             get { return isAdmin; }
             set { isAdmin = value; RaisePropertyChanged(); }
         }
+        private Visibility error;
 
-        private MainPageViewModel mainvm;
+        public Visibility Error
+        {
+            get
+            {
+                return error;
+                
+            }
+            set
+            {
+                error = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public MainPageViewModel mainvm;
         private bool isLoading;
         private bool isNewsFeedsLoading;
         private bool isRichtingLoading;
@@ -56,6 +72,8 @@ namespace OpendeurdagApp.ViewModel
             isRichtingLoading = true;
             isNewsFeedsLoading = true;
             mainvm = mainPagevm;
+            Error = Visibility.Collapsed;
+            IsAdmin = UserRepository.IsLoggedIn ? Visibility.Collapsed : Visibility.Visible;
             getNewsFeed();
             getOpleidingen();
         }
@@ -77,8 +95,16 @@ namespace OpendeurdagApp.ViewModel
 
         public void setIsAdmin(bool admin)
         {
+            UserRepository.IsLoggedIn = admin;
             IsAdmin = admin ? Visibility.Collapsed : Visibility.Visible;
+            Error = admin ? Visibility.Collapsed : Visibility.Visible;
             mainvm.IsAdmin = admin ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public void loguit()
+        {
+            IsAdmin = Visibility.Visible;
+            mainvm.IsAdmin = Visibility.Collapsed;
         }
 
 

@@ -104,6 +104,7 @@
     <Compile Include="Model\DAL\FormulierInschrijvingRepo.cs" />
     <Compile Include="Model\DAL\UserRepository.cs" />
     <Compile Include="Model\Gebouw.cs" />
+    <Compile Include="Model\Locatie.cs" />
     <Compile Include="Model\NewsfeedItem.cs" />
     <Compile Include="Model\Opleiding.cs" />
     <Compile Include="Model\Richting.cs" />
@@ -127,6 +128,9 @@
     </Compile>
     <Compile Include="View\Cars.xaml.cs">
       <DependentUpon>Cars.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LocatieControl.xaml.cs">
+      <DependentUpon>LocatieControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -184,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Cars.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LocatieControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

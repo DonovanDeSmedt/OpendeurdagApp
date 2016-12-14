@@ -61,8 +61,10 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="btnLogin" Content="Login" Width="200" Margin="120,15,0,0" Tapped="Login" Visibility="{Binding IsAdmin}"/>
+                    <Button x:Name="btnLoguit" Content="Afmelden" Width="200" Margin="120,15,0,0" Tapped="Loguit" Visibility="{Binding mainvm.IsAdmin}"></Button>
                 </StackPanel>
-            </StackPanel>
+                <TextBlock Text="Email of wachtwoord ongeldig" Visibility="{Binding Error}" Foreground="#FFF91717" HorizontalAlignment="Center" FontSize="18" Margin="0 20 0 0"/>
+            </StackPanel> 
         </PivotItem>
     </Pivot>
 </Page>

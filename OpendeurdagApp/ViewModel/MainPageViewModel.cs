@@ -15,11 +15,12 @@ namespace OpendeurdagApp.ViewModel
         public MainPageViewModel()
         {
             IsAdmin = Visibility.Collapsed;
-            OpleidingenCommand = new RelayCommand(opleiding => ShowOpleidingen(opleiding));
+            OpleidingenCommand = new RelayCommand(_ => ShowOpleidingen());
             CampussenCommand = new RelayCommand(_ => ShowCampussen());
             CampusDetailCommand = new RelayCommand(campus => ShowDetailCampus(campus));
             NewsFeedCommand = new RelayCommand(_ => ShowNewsFeed());
             AdminCommand = new RelayCommand(_ => ShowAdminPage());
+            HomeCommand = new RelayCommand(_ => ShowHomePage());
         }
         private ViewModelBase currentData;
 
@@ -42,11 +43,10 @@ namespace OpendeurdagApp.ViewModel
         public RelayCommand CampusDetailCommand { get; set; }
         public RelayCommand NewsFeedCommand { get; set; }
         public RelayCommand AdminCommand { get; set; }
+        public RelayCommand HomeCommand { get; set; }
 
-        private void ShowOpleidingen(Object o)
+        private void ShowOpleidingen()
         {
-            Richting richting = (Richting) o;
-            Debug.WriteLine(richting); 
             CurrentData = new OpleidingenViewModel();
             Debug.WriteLine("Command opleiding werd uitgevoerd!");
         }
@@ -56,6 +56,10 @@ namespace OpendeurdagApp.ViewModel
             CurrentData = new AdminViewModel();
         }
 
+        private void ShowHomePage()
+        {
+            CurrentData = this;
+        }
         private void ShowCampussen()
         {
             CurrentData = new CampussenViewModel(this);

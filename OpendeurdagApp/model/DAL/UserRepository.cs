@@ -12,5 +12,11 @@ namespace OpendeurdagApp.Model.DAL
         {
             return email == "admin@hogent.be" && wachtwoord == "admin";
         }
+
+        public static void loguit()
+        {
+            IsLoggedIn = false;
+        }
+        public static bool IsLoggedIn { get; set; }
     }
 }

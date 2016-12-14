@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <SplitView x:Name="MySplitView" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+    <!--<SplitView x:Name="MySplitView" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
                CompactPaneLength="50" OpenPaneLength="150">
-        <SplitView.Pane>
+        --><!--<SplitView.Pane>
             <StackPanel Background="Gray">
                 <Button x:Name="Hoofdmenu" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Height="50" Background="Transparent" Click="Hoofdmenu_OnClick" HorizontalAlignment="Right" Width="50" Margin="0,0,100,0"/>
 
@@ -34,13 +34,40 @@
                     <TextBlock Text="Admin" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
-        </SplitView.Pane>
+        </SplitView.Pane>--><!--
         <SplitView.Content>
             <ContentControl Content="{Binding CurrentData}" ContentTemplate="{Binding CurrentData.Template}">
-
+                <Button Content="HOME"></Button>
             </ContentControl>
         </SplitView.Content>
-    </SplitView>
-
+    </SplitView>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" MaxWidth="400">
+            <TextBlock Text="Hogent" HorizontalAlignment="Center" FontSize="35"></TextBlock>
+            <GridView IsItemClickEnabled="True" SelectionChanged="GridView_SelectionChanged">
+                <StackPanel HorizontalAlignment="Center" Tag="richting" >
+                    <Image Width="150" Source="ms-appx:///Assets/building.png" />
+                    <TextBlock FontSize="16" Text="Richtingen" HorizontalAlignment="Center" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Tag="campus">
+                    <Image Width="150" Source="ms-appx:///Assets/building.png" />
+                    <TextBlock FontSize="16" Text="Campussen" HorizontalAlignment="Center" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Tag="newsfeed">
+                    <Image Width="150" Source="ms-appx:///Assets/building.png" />
+                    <TextBlock FontSize="16" Text="Newsfeed" HorizontalAlignment="Center" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Tag="admin">
+                    <Image Width="150" Source="ms-appx:///Assets/building.png" />
+                    <TextBlock FontSize="16" Text="Admin" HorizontalAlignment="Center" />
+                </StackPanel>
+                <Button Command="{Binding CampussenCommand}" Content="dsfsf"></Button>
+            </GridView>
+        </StackPanel>
+    </Grid>
 
 </UserControl>
