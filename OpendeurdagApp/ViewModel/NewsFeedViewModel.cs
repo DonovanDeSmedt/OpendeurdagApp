@@ -82,6 +82,7 @@ namespace OpendeurdagApp.ViewModel
             HttpClient client = new HttpClient();
             var jsonString = await client.GetStringAsync(url + "newsfeeditems");
             NewsfeedList = JsonConvert.DeserializeObject<ObservableCollection<NewsfeedItem>>(jsonString);
+            isNewsFeedsLoading = false;
             IsLoading = isNewsFeedsLoading && isRichtingLoading;
         }
         private async void getOpleidingen()
@@ -89,6 +90,7 @@ namespace OpendeurdagApp.ViewModel
             HttpClient client = new HttpClient();
             var jsonString = await client.GetStringAsync(url + "richtings");
             Richtingen = JsonConvert.DeserializeObject<ObservableCollection<Richting>>(jsonString);
+            isRichtingLoading = false;
             IsLoading = isNewsFeedsLoading && isRichtingLoading;
 
         }

@@ -49,6 +49,7 @@
         <PivotItem Header="Locatie">
             <StackPanel>
                 <TextBlock Text="{Binding Campus.Adres}"></TextBlock>
+                <local:LocatieControl></local:LocatieControl>
             </StackPanel>
         </PivotItem>
     </Pivot>

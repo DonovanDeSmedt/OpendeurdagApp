@@ -105,7 +105,7 @@
                             ImageSource="ms-appx:///Assets/hg-bg.jpg"
                             AlignmentY="Top" AlignmentX="Center"/>
             </Grid.Background>
-            <Hub x:Name="hub">
+            <Hub>
                 <Hub.Header>
                     <Grid Margin="20,20,0,0">
                         <Grid.ColumnDefinitions>
@@ -172,11 +172,7 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Campus.Naam}" Style="{StaticResource TitelDekstop}" />
                                 <StackPanel  Grid.Column="0" Grid.Row="1" Orientation="Vertical" Style="{StaticResource Footer}">
-                                    <TextBlock Text="V. Vaerwyckweg 1 (auto, post)" Style="{StaticResource Center}"/>
-                                    <TextBlock Text="Voskenslaan 270" Style="{StaticResource Center}"/>
-                                    <TextBlock Text="9000 Gent" Style="{StaticResource Center}"/>
-                                    <TextBlock Text="09 243 20 04)" Style="{StaticResource Center}"/>
-                                    <TextBlock Text="{Binding Campus.Adres}"></TextBlock>
+                                    <TextBlock Text="{Binding Campus.Adres}" Style="{StaticResource Center}"></TextBlock>
                                 </StackPanel>
                                 <local:LocatieControl Grid.Column="0" Grid.Row="0"></local:LocatieControl>
                                 <!--<Image Grid.Column="0" Grid.Row="2" Source="ms-appx:///Assets/plan_schoonmeersen.JPG" MaxWidth="250" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->

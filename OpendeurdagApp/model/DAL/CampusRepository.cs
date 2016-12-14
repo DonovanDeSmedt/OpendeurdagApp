@@ -28,10 +28,10 @@ namespace OpendeurdagApp.Model.DAL
         };
         private static List<NewsfeedItem> listNewsFeed = new List<NewsfeedItem>
         {
-            new NewsfeedItem() {Datum = new DateTime(2016, 11, 10),Inhoud = "Mensen, kom dit zien kom dit zien, bickies aan een euro aan de D-resto", Titel = "Bickies aan een euro",Tag = "FOOD" },
-            new NewsfeedItem() {Datum = new DateTime(2016, 11, 10),Inhoud = "Mensen, kom dit zien kom dit zien, bickies aan twee euro aan de D-resto", Titel = "Bickies aan twee euro",Tag = "FAST" },
-            new NewsfeedItem() {Datum = new DateTime(2016, 11, 10),Inhoud = "Mensen, kom dit zien kom dit zien, bickies aan drie euro aan de D-resto", Titel = "Bickies aan drie euro",Tag = "ONGEZOND" },
-            new NewsfeedItem() {Datum = new DateTime(2016, 11, 10),Inhoud = "Mensen, kom dit zien kom dit zien, bickies aan vier euro aan de D-resto", Titel = "Bickies aan vier euro",Tag = "RESTO" }
+            new NewsfeedItem() {Datum = new DateTime(2016, 11, 10),Inhoud = "Mensen, kom dit zien kom dit zien, bickies aan een euro aan de D-resto", Title = "Bickies aan een euro",Tag = "FOOD" },
+            new NewsfeedItem() {Datum = new DateTime(2016, 11, 10),Inhoud = "Mensen, kom dit zien kom dit zien, bickies aan twee euro aan de D-resto", Title = "Bickies aan twee euro",Tag = "FAST" },
+            new NewsfeedItem() {Datum = new DateTime(2016, 11, 10),Inhoud = "Mensen, kom dit zien kom dit zien, bickies aan drie euro aan de D-resto", Title = "Bickies aan drie euro",Tag = "ONGEZOND" },
+            new NewsfeedItem() {Datum = new DateTime(2016, 11, 10),Inhoud = "Mensen, kom dit zien kom dit zien, bickies aan vier euro aan de D-resto", Title = "Bickies aan vier euro",Tag = "RESTO" }
         };
 
 

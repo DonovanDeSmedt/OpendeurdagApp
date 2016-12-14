@@ -12,7 +12,7 @@ namespace OpendeurdagApp.Model
     {
         private string titel;
 
-        public string Titel
+        public string Title
         {
             get
             {

@@ -13,10 +13,10 @@
                 <ListView Name="ListViewNewsFeed" ItemsSource="{Binding NewsfeedList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Tag}"></TextBlock>
-                                <TextBlock Text="{Binding Titel}"></TextBlock>
-                                <TextBlock TextWrapping="Wrap"><Run Text="{Binding Inhoud}"/></TextBlock>
+                            <StackPanel Margin="0 0 0 20" Orientation="Vertical" BorderBrush="#006FB8" Background="#FFFFFF" BorderThickness="0,2,0,2">
+                                <TextBlock Text="{Binding Title}" FontSize="20" Margin="6 0 6 10"/>
+                                <TextBlock TextWrapping="Wrap" Margin="6 0 6 0"><Run Text="{Binding Inhoud}"/></TextBlock>
+                                <TextBlock Margin="6 5 6 5" Text="{Binding Tag}" FontWeight="Bold" FontSize="15" Foreground="#FFB00000"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -64,7 +64,7 @@
                     <Button x:Name="btnLoguit" Content="Afmelden" Width="200" Margin="120,15,0,0" Tapped="Loguit" Visibility="{Binding mainvm.IsAdmin}"></Button>
                 </StackPanel>
                 <TextBlock Text="Email of wachtwoord ongeldig" Visibility="{Binding Error}" Foreground="#FFF91717" HorizontalAlignment="Center" FontSize="18" Margin="0 20 0 0"/>
-            </StackPanel> 
+            </StackPanel>
         </PivotItem>
     </Pivot>
 </Page>
